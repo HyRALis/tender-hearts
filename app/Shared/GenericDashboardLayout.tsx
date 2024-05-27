@@ -27,7 +27,7 @@ export default function GenericDashboardLayout({
         setOpen(false);
     };
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', background: 'white' }}>
             <CssBaseline />
             <AppBarStyled position="fixed" open={open}>
                 <Toolbar>
