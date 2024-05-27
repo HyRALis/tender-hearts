@@ -27,7 +27,7 @@ export default function GenericDashboardLayout({
         setOpen(false);
     };
     return (
-        <div style={{ display: 'flex', background: 'white' }}>
+        <div style={{ display: 'flex', background: 'white', height: '100vh', paddingTop: '68px' }}>
             <CssBaseline />
             <AppBarStyled position="fixed" open={open}>
                 <Toolbar>
@@ -46,7 +46,7 @@ export default function GenericDashboardLayout({
                 </Toolbar>
             </AppBarStyled>
             <Sidebar isOpen={open} handleDrawerClose={handleDrawerClose} items={sidebarItems} />
-            <main style={{ flexGrow: 1, padding: '24px', height: '100vh' }}>{children}</main>
+            <main style={{ flexGrow: 1, padding: '24px', height: '100%', overflowY: 'auto' }}>{children}</main>
         </div>
     );
 }

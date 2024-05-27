@@ -56,8 +56,8 @@ const HealthAssistanceRequestForm: React.FC = () => {
     // };
 
     return (
-        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 1 }}>
-            <Typography variant="h4" component="h1" gutterBottom>
+        <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ mt: 4 }}>
+            <Typography variant="h4" component="h1" gutterBottom color={'black'}>
                 Health Assistance Request Form
             </Typography>
             <Grid container spacing={2}>
