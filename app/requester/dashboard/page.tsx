@@ -1,8 +1,8 @@
 import React from 'react';
-import HealthAssistanceRequestForm from './components/HealthAssistanceRequestForm';
+import AdminDashboardLayout from './layout';
 
 const Dashboard = () => {
-    return <HealthAssistanceRequestForm />;
+    return <div>Welcome to admin dashboard</div>;
 };
 
 export default Dashboard;
