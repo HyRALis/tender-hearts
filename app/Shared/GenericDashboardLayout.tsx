@@ -3,7 +3,7 @@
 import '../globals.css';
 import { AppBarStyled } from '@/app/Shared/materialStyling';
 import React, { useState } from 'react';
-import { CssBaseline, IconButton, Toolbar, Typography } from '@mui/material';
+import { Container, CssBaseline, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { TListItemType } from './components/Sidebar/primitives/SidebarListItem';
@@ -46,7 +46,9 @@ export default function GenericDashboardLayout({
                 </Toolbar>
             </AppBarStyled>
             <Sidebar isOpen={open} handleDrawerClose={handleDrawerClose} items={sidebarItems} />
-            <main style={{ flexGrow: 1, padding: '24px', height: '100%', overflowY: 'auto' }}>{children}</main>
+            <main style={{ flexGrow: 1, padding: '24px', height: '100%', overflowY: 'auto' }}>
+                <Container>{children}</Container>
+            </main>
         </div>
     );
 }
