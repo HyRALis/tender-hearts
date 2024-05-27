@@ -1,29 +1,21 @@
 'use client';
 
 import '../globals.css';
-import { AppBarStyled, DrawerHeader, DrawerStyled } from '@/app/Shared/materialStyling';
+import { AppBarStyled } from '@/app/Shared/materialStyling';
 import React, { useState } from 'react';
-import {
-    CssBaseline,
-    Divider,
-    IconButton,
-    List,
-    ListItem,
-    ListItemIcon,
-    ListItemText,
-    Toolbar,
-    Typography
-} from '@mui/material';
+import { CssBaseline, IconButton, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import HomeIcon from '@mui/icons-material/Home';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { Sidebar } from './components/Sidebar/Sidebar';
+import { TListItemType } from './components/Sidebar/primitives/SidebarListItem';
 
 export default function GenericDashboardLayout({
-    children
+    children,
+    sidebarItems,
+    pageName
 }: Readonly<{
     children: React.ReactNode;
+    sidebarItems: TListItemType[];
+    pageName: string;
 }>) {
     const [open, setOpen] = useState(false);
 
@@ -49,38 +41,11 @@ export default function GenericDashboardLayout({
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Portal Name
+                        {`Tender Hearts | ${pageName}`}
                     </Typography>
                 </Toolbar>
             </AppBarStyled>
-            <DrawerStyled variant="permanent" open={open}>
-                <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon />
-                    </IconButton>
-                </DrawerHeader>
-                <Divider />
-                <List>
-                    <ListItem key="Home">
-                        <ListItemIcon>
-                            <HomeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItem>
-                    <ListItem key="Profile">
-                        <ListItemIcon>
-                            <AccountCircleIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Profile" />
-                    </ListItem>
-                    <ListItem key="Logout">
-                        <ListItemIcon>
-                            <ExitToAppIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Logout" />
-                    </ListItem>
-                </List>
-            </DrawerStyled>
+            <Sidebar isOpen={open} handleDrawerClose={handleDrawerClose} items={sidebarItems} />
             <main style={{ flexGrow: 1, padding: '24px' }}>{children}</main>
         </div>
     );

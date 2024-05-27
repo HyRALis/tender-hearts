@@ -1,5 +1,6 @@
 'use client';
 import GenericDashboardLayout from '@/app/Shared/GenericDashboardLayout';
+import { TListItemType } from '@/app/Shared/components/Sidebar/primitives/SidebarListItem';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -9,5 +10,11 @@ export default function DonorDashboardLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return <GenericDashboardLayout>{children}</GenericDashboardLayout>;
+    const sidebarItems: TListItemType[] = ['Dashboard', 'Submit Request', 'Track Requests', 'Profile', 'Logout'];
+
+    return (
+        <GenericDashboardLayout sidebarItems={sidebarItems} pageName="Requester">
+            {children}
+        </GenericDashboardLayout>
+    );
 }
