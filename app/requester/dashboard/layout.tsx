@@ -13,8 +13,12 @@ export default function DonorDashboardLayout({
     const sidebarItems: TListItemType[] = ['Dashboard', 'Submit Request', 'Track Requests', 'Profile', 'Logout'];
 
     return (
-        <GenericDashboardLayout sidebarItems={sidebarItems} pageName="Requester">
-            {children}
-        </GenericDashboardLayout>
+      <GenericDashboardLayout
+        sidebarItems={sidebarItems}
+        pageName='Requester'
+        portal={'requester'}
+      >
+        {children}
+      </GenericDashboardLayout>
     );
 }

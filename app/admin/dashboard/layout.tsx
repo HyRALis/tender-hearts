@@ -13,8 +13,12 @@ export default function AdminDashboardLayout({
     const sidebarItems: TListItemType[] = ['Dashboard', 'Manage Users', 'Manage Requests', 'Reports', 'Logout'];
 
     return (
-        <GenericDashboardLayout sidebarItems={sidebarItems} pageName="Admin">
-            {children}
-        </GenericDashboardLayout>
+      <GenericDashboardLayout
+        sidebarItems={sidebarItems}
+        pageName='Admin'
+        portal={'admin'}
+      >
+        {children}
+      </GenericDashboardLayout>
     );
 }

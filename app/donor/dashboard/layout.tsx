@@ -20,8 +20,12 @@ export default function RequesterDashboardLayout({
     ];
 
     return (
-        <GenericDashboardLayout sidebarItems={sidebarItems} pageName="Donor">
-            {children}
-        </GenericDashboardLayout>
+      <GenericDashboardLayout
+        sidebarItems={sidebarItems}
+        pageName='Donor'
+        portal={'donor'}
+      >
+        {children}
+      </GenericDashboardLayout>
     );
 }
