@@ -8,6 +8,7 @@ import { TDonorListItem } from '@/app/types/donor';
 import { TRequesterListItem } from '@/app/types/requester';
 import Link from 'next/link';
 import { TPortalType } from '@/app/types/shared';
+import { useParams } from 'next/navigation';
 
 export type TListItemType =
   | TAdminListItem
@@ -20,6 +21,7 @@ export interface ListItemProps {
 }
 
 export const SidebarListItem: FC<ListItemProps> = ({ type, portal }) => {
+  const params = useParams<{ locale: string }>();
   const getIconByType = (type: TListItemType) => {
     switch (type) {
       case 'Dashboard':
@@ -50,25 +52,25 @@ export const SidebarListItem: FC<ListItemProps> = ({ type, portal }) => {
   const getLinkByType = (type: TListItemType) => {
     switch (type) {
       case 'Dashboard':
-        return `/${portal}/dashboard`;
+        return `/${params.locale}/${portal}/dashboard`;
       case 'Manage Users':
-        return `/${portal}/manage-users`;
+        return `/${params.locale}/${portal}/manage-users`;
       case 'Manage Requests':
-        return `/${portal}/manage-requests`;
+        return `/${params.locale}/${portal}/manage-requests`;
       case 'Reports':
-        return `/${portal}/reports`;
+        return `/${params.locale}/${portal}/reports`;
       case 'Browse Requests':
-        return `/${portal}/browse-requests`;
+        return `/${params.locale}/${portal}/browse-requests`;
       case 'Donation History':
-        return `/${portal}/donation-history`;
+        return `/${params.locale}/${portal}/donation-history`;
       case 'Submit Request':
-        return `/${portal}/submit-request`;
+        return `/${params.locale}/${portal}/submit-request`;
       case 'Track Requests':
-        return `/${portal}/track-requests`;
+        return `/${params.locale}/${portal}/track-requests`;
       case 'Profile':
-        return `/${portal}/profile`;
+        return `/${params.locale}/${portal}/profile`;
       case 'Logout':
-        return `/${portal}/logout`;
+        return `/${params.locale}/${portal}/logout`;
       default:
         return '';
     }

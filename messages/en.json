@@ -1,0 +1,29 @@
+{
+  "Index": {
+    "title": "Hello world!"
+  },
+  "Shared": {
+    "dashboard": "Dashboard",
+    "manage_users": "Manage Users",
+    "manage_requests": "Manage Requests",
+    "reports": "Reports",
+    "browse_requests": "Browse Requests",
+    "donation_history": "Donation History",
+    "submit_request": "Submit Request",
+    "track_requests": "Track Requests",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "Admin": {
+    "title": "Tender hearts",
+    "admin": "Admin"
+  },
+  "Donor": {
+    "title": "Tender hearts",
+    "donor": "Donor"
+  },
+  "Requester": {
+    "title": "Tender hearts",
+    "requester": "Requester"
+  }
+}
