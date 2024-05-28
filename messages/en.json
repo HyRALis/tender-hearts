@@ -3,6 +3,7 @@
     "title": "Hello world!"
   },
   "Shared": {
+    "title": "Tender hearts",
     "dashboard": "Dashboard",
     "manage_users": "Manage Users",
     "manage_requests": "Manage Requests",
@@ -12,7 +13,10 @@
     "submit_request": "Submit Request",
     "track_requests": "Track Requests",
     "profile": "Profile",
-    "logout": "Logout"
+    "logout": "Logout",
+    "mk": "Macedonian",
+    "en": "English",
+    "language": "Language"
   },
   "Admin": {
     "title": "Tender hearts",

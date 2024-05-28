@@ -3,11 +3,21 @@
 import '../globals.css';
 import { AppBarStyled } from '@/app/Shared/materialStyling';
 import React, { useState } from 'react';
-import { Container, CssBaseline, IconButton, Toolbar, Typography } from '@mui/material';
+import {
+  Box,
+  Container,
+  CssBaseline,
+  IconButton,
+  Stack,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { TListItemType } from './components/Sidebar/primitives/SidebarListItem';
 import { TPortalType } from '../types/shared';
+import LanguageSwitcher from './components/LanguageSwitcher';
+import { useTranslations } from 'next-intl';
 
 export default function GenericDashboardLayout({
   children,
@@ -20,6 +30,7 @@ export default function GenericDashboardLayout({
   pageName: string;
   portal: TPortalType;
 }>) {
+  const t = useTranslations('Shared');
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -41,18 +52,32 @@ export default function GenericDashboardLayout({
       <CssBaseline />
       <AppBarStyled position='fixed' open={open}>
         <Toolbar>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            onClick={handleDrawerOpen}
-            edge='start'
-            sx={{ marginRight: 5, ...(open && { display: 'none' }) }}
+          <Stack
+            direction={'row'}
+            justifyContent={'space-between'}
+            width={'100%'}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant='h6' noWrap>
-            {`Tender Hearts | ${pageName}`}
-          </Typography>
+            <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+              <IconButton
+                color='inherit'
+                aria-label='open drawer'
+                onClick={handleDrawerOpen}
+                edge='start'
+                sx={{ marginRight: 5, ...(open && { display: 'none' }) }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+                <Typography variant='h5' noWrap>
+                  {`${t('title')}`}
+                </Typography>
+                <Typography variant='h6' noWrap>
+                  {` | ${pageName}`}
+                </Typography>
+              </Box>
+            </Box>
+            <LanguageSwitcher />
+          </Stack>
         </Toolbar>
       </AppBarStyled>
       <Sidebar

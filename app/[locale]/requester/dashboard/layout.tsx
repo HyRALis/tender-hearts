@@ -1,24 +1,33 @@
 'use client';
 import GenericDashboardLayout from '@/app/Shared/GenericDashboardLayout';
 import { TListItemType } from '@/app/Shared/components/Sidebar/primitives/SidebarListItem';
+import { useTranslations } from 'next-intl';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function DonorDashboardLayout({
-    children
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    const sidebarItems: TListItemType[] = ['Dashboard', 'Submit Request', 'Track Requests', 'Profile', 'Logout'];
+  const t = useTranslations('Requester');
 
-    return (
-      <GenericDashboardLayout
-        sidebarItems={sidebarItems}
-        pageName='Requester'
-        portal={'requester'}
-      >
-        {children}
-      </GenericDashboardLayout>
-    );
+  const sidebarItems: TListItemType[] = [
+    'Dashboard',
+    'Submit Request',
+    'Track Requests',
+    'Profile',
+    'Logout',
+  ];
+
+  return (
+    <GenericDashboardLayout
+      sidebarItems={sidebarItems}
+      pageName={t('requester')}
+      portal={'requester'}
+    >
+      {children}
+    </GenericDashboardLayout>
+  );
 }

@@ -1,5 +1,33 @@
 {
   "Index": {
-    "title": "Здраво свету !"
+    "title": "Hello world!"
+  },
+  "Shared": {
+    "title": "Нежни срца",
+    "dashboard": "Инфо табла",
+    "manage_users": "Менаџирање со корисници",
+    "manage_requests": "Менаџирање со барања",
+    "reports": "Пријави",
+    "browse_requests": "Разгледај барања",
+    "donation_history": "Историја на донации",
+    "submit_request": "Поднеси барање",
+    "track_requests": "Следи барања",
+    "profile": "Профил",
+    "logout": "Одјави се",
+    "mk": "Македонски",
+    "en": "Англиски",
+    "language": "Јазик"
+  },
+  "Admin": {
+    "title": "Нежни срца",
+    "admin": "Администратор"
+  },
+  "Donor": {
+    "title": "Нежни срца",
+    "donor": "Донатор"
+  },
+  "Requester": {
+    "title": "Нежни срца",
+    "requester": "Барател"
   }
 }
