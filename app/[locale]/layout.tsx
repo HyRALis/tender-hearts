@@ -1,3 +1,5 @@
+import { CssBaseline } from '@mui/material';
+import { grey } from '@mui/material/colors';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
@@ -14,8 +16,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <body style={{ width: '100vw', height: '100vh', background: grey[900] }}>
         <NextIntlClientProvider messages={messages}>
+          <CssBaseline />
           {children}
         </NextIntlClientProvider>
       </body>

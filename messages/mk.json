@@ -1,6 +1,11 @@
 {
   "Index": {
-    "title": "Hello world!"
+    "title": "Нежни срца",
+    "demo_page": "Демо страна",
+    "admin": "Администратор",
+    "donor": "Донатор",
+    "requester": "Барател",
+    "reviewer": "Прегледувач"
   },
   "Shared": {
     "title": "Нежни срца",

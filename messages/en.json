@@ -1,6 +1,11 @@
 {
   "Index": {
-    "title": "Hello world!"
+    "title": "Tender hearts",
+    "demo_page": "Demo Page",
+    "admin": "Admin",
+    "donor": "Donor",
+    "requester": "Requester",
+    "reviewer": "Reviewer"
   },
   "Shared": {
     "title": "Tender hearts",
