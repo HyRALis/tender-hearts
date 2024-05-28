@@ -1,5 +1,4 @@
 import React from 'react';
-import AdminDashboardLayout from './layout';
 import { Typography } from '@mui/material';
 
 const Dashboard = () => {
