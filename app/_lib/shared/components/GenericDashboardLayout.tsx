@@ -1,7 +1,7 @@
 'use client';
 
 import '../globals.css';
-import { AppBarStyled } from '@/app/Shared/materialStyling';
+import { AppBarStyled } from '@/app/_lib/shared/components/materialStyling';
 import React, { useState } from 'react';
 import {
   Box,
@@ -14,9 +14,9 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Sidebar } from './components/Sidebar/Sidebar';
-import { TListItemType } from './components/Sidebar/primitives/SidebarListItem';
-import { TPortalType } from '../types/shared';
-import LanguageSwitcher from './components/LanguageSwitcher';
+import { TListItemType } from './sIdebar/primitives/SidebarListItem';
+import { TPortalType } from '../../../types/shared';
+import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslations } from 'next-intl';
 
 export default function GenericDashboardLayout({
