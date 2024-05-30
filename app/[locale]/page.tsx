@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useTranslations } from 'next-intl';
-import LanguageSwitcher from '../Shared/components/LanguageSwitcher';
+import LanguageSwitcher from '../_lib/shared/components/LanguageSwitcher';
 import { useParams } from 'next/navigation';
 import { grey } from '@mui/material/colors';
 import { ReactNode } from 'react';
