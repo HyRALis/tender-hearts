@@ -21,7 +21,14 @@
     "logout": "Logout",
     "mk": "Macedonian",
     "en": "English",
-    "language": "Language"
+    "language": "Language",
+    "total_requests": "total requests",
+    "approved_requests": "approved requests",
+    "rejected_requests": "total requests",
+    "admin": "Admin",
+    "donor": "Donor",
+    "requester": "Requester",
+    "reviewer": "Reviewer"
   },
   "Admin": {
     "title": "Tender hearts",

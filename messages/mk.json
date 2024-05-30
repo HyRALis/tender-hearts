@@ -21,7 +21,14 @@
     "logout": "Одјави се",
     "mk": "Македонски",
     "en": "Англиски",
-    "language": "Јазик"
+    "language": "Јазик",
+    "total_requests": "Вкупно барања",
+    "approved_requests": "Одобрени барања",
+    "rejected_requests": "Одбиени барања",
+    "admin": "Администратор",
+    "donor": "Донатор",
+    "requester": "Барател",
+    "reviewer": "Прегледувач"
   },
   "Admin": {
     "title": "Нежни срца",
