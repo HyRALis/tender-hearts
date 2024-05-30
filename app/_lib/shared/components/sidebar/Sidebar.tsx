@@ -1,12 +1,9 @@
-import {
-  DrawerHeader,
-  DrawerStyled,
-} from '@/app/_lib/shared/components/materialStyling';
 import React, { FC } from 'react';
 import { Divider, IconButton, List } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { SidebarListItem, TListItemType } from './primitives/SidebarListItem';
 import { TPortalType } from '@/app/_lib/types/shared';
+import { DrawerHeader, DrawerStyled } from '../../utils/materialStyling';
 
 export interface SidebarProps {
   isOpen: boolean;
