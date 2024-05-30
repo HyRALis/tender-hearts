@@ -17,7 +17,7 @@ import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import Link from 'next/link';
-import { DemoCard } from '../LandingPageUi/DemoCard';
+import { DemoCard } from '../_lib/landing/ui/DemoCard';
 
 export default function Index() {
   const t = useTranslations('Index');
