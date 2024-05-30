@@ -1,0 +1,8 @@
+export const COLORS = {
+  PRIMARY: '#003366',
+  PRIMARY_TWO: '#228B22',
+  ACCENT: '#FF7F50',
+  ACCENT_TWO: '#E6E6FA',
+  NATURAL: '#FFFFFF',
+  NATURAL_TWO: '#D3D3D3',
+};

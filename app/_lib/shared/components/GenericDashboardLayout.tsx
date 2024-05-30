@@ -30,7 +30,7 @@ export default function GenericDashboardLayout({
   portal: TPortalType;
 }>) {
   const t = useTranslations('Shared');
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -49,7 +49,7 @@ export default function GenericDashboardLayout({
       }}
     >
       <CssBaseline />
-      <AppBarStyled position='fixed' open={open}>
+      {/* <AppBarStyled position='fixed' open={open}>
         <Toolbar>
           <Stack
             direction={'row'}
@@ -78,7 +78,7 @@ export default function GenericDashboardLayout({
             <LanguageSwitcher />
           </Stack>
         </Toolbar>
-      </AppBarStyled>
+      </AppBarStyled> */}
       <Sidebar
         isOpen={open}
         handleDrawerClose={handleDrawerClose}

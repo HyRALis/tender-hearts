@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Divider, IconButton, List } from '@mui/material';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { SidebarListItem, TListItemType } from './primitives/SidebarListItem';
 import { TPortalType } from '@/app/_lib/types/shared';
 import { DrawerHeader, DrawerStyled } from '../../utils/materialStyling';
+import { SidebarHeader } from './primitives/SidebarHeader';
 
 export interface SidebarProps {
   isOpen: boolean;
@@ -20,11 +20,7 @@ export const Sidebar: FC<SidebarProps> = ({
 }) => {
   return (
     <DrawerStyled variant='permanent' open={isOpen}>
-      <DrawerHeader>
-        <IconButton onClick={handleDrawerClose}>
-          <ChevronLeftIcon />
-        </IconButton>
-      </DrawerHeader>
+      <SidebarHeader username='Petar Trajanoski' role='requester' />
       <Divider />
       <List>
         {items.map((item) => (
