@@ -1,5 +1,5 @@
-import GenericDashboardLayout from '@/app/Shared/GenericDashboardLayout';
-import { TListItemType } from '@/app/_lib/shared/components/sIdebar/primitives/SidebarListItem';
+import GenericDashboardLayout from '@/app/_lib/shared/components/GenericDashboardLayout';
+import { TListItemType } from '@/app/_lib/shared/components/sidebar/primitives/SidebarListItem';
 import { useTranslations } from 'next-intl';
 import { Inter } from 'next/font/google';
 
