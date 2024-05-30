@@ -1,22 +1,13 @@
 'use client';
-import {
-  Box,
-  Card,
-  CardContent,
-  Container,
-  Grid,
-  Typography,
-} from '@mui/material';
+
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../_lib/shared/components/LanguageSwitcher';
 import { useParams } from 'next/navigation';
-import { grey } from '@mui/material/colors';
-import { ReactNode } from 'react';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
-import Link from 'next/link';
 import { DemoCard } from '../_lib/landing/ui/DemoCard';
 
 export default function Index() {
