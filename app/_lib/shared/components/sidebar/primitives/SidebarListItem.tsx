@@ -9,6 +9,7 @@ import { TRequesterListItem } from '@/app/_lib/types/requester';
 import Link from 'next/link';
 import { TPortalType } from '@/app/_lib/types/shared';
 import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export type TListItemType =
   | TAdminListItem
@@ -22,69 +23,82 @@ export interface ListItemProps {
 
 export const SidebarListItem: FC<ListItemProps> = ({ type, portal }) => {
   const params = useParams<{ locale: string }>();
-  const getIconByType = (type: TListItemType) => {
+  const t = useTranslations('Shared');
+
+  const getListItemData = (type: TListItemType) => {
     switch (type) {
       case 'Dashboard':
-        return <HomeIcon aria-label='Dashboard' />;
+        return {
+          text: t('dashboard'),
+          href: `/${params.locale}/${portal}/dashboard`,
+          icon: <HomeIcon aria-label='Dashboard' />,
+        };
       case 'Manage Users':
-        return <AccountCircleIcon aria-label='Manage Users' />;
+        return {
+          text: t('manage_users'),
+          href: `/${params.locale}/${portal}/dashboard`,
+          icon: <AccountCircleIcon aria-label='Manage Users' />,
+        };
       case 'Manage Requests':
-        return <AccountCircleIcon aria-label='Manage Requests' />;
+        return {
+          text: t('manage_requests'),
+          href: `/${params.locale}/${portal}/manage-users`,
+          icon: <AccountCircleIcon aria-label='Manage Requests' />,
+        };
       case 'Reports':
-        return <AccountCircleIcon aria-label='Reports' />;
+        return {
+          text: t('reports'),
+          href: `/${params.locale}/${portal}/reports`,
+          icon: <AccountCircleIcon aria-label='Reports' />,
+        };
       case 'Browse Requests':
-        return <AccountCircleIcon aria-label='Browse Requests' />;
+        return {
+          text: t('browse_requests'),
+          href: `/${params.locale}/${portal}/browse-requests`,
+          icon: <AccountCircleIcon aria-label='Browse Requests' />,
+        };
       case 'Donation History':
-        return <AccountCircleIcon aria-label='Donation History' />;
+        return {
+          text: t('donation_history'),
+          href: `/${params.locale}/${portal}/donation-history`,
+          icon: <AccountCircleIcon aria-label='Donation History' />,
+        };
       case 'Submit Request':
-        return <AccountCircleIcon aria-label='Submit Request' />;
+        return {
+          text: t('submit_request'),
+          href: `/${params.locale}/${portal}/submit-request`,
+          icon: <AccountCircleIcon aria-label='Submit Request' />,
+        };
       case 'Track Requests':
-        return <AccountCircleIcon aria-label='Track Requests' />;
+        return {
+          text: t('track_requests'),
+          href: `/${params.locale}/${portal}/track-requests`,
+          icon: <AccountCircleIcon aria-label='Track Requests' />,
+        };
       case 'Profile':
-        return <AccountCircleIcon aria-label='Profile' />;
+        return {
+          text: t('profile'),
+          href: `/${params.locale}/${portal}/profile`,
+          icon: <AccountCircleIcon aria-label='Profile' />,
+        };
       case 'Logout':
-        return <ExitToAppIcon aria-label='Logout' />;
+        return {
+          text: t('logout'),
+          href: `/${params.locale}/${portal}/logout`,
+          icon: <ExitToAppIcon aria-label='Logout' />,
+        };
       default:
         return null;
     }
   };
 
-  const getLinkByType = (type: TListItemType) => {
-    switch (type) {
-      case 'Dashboard':
-        return `/${params.locale}/${portal}/dashboard`;
-      case 'Manage Users':
-        return `/${params.locale}/${portal}/manage-users`;
-      case 'Manage Requests':
-        return `/${params.locale}/${portal}/manage-requests`;
-      case 'Reports':
-        return `/${params.locale}/${portal}/reports`;
-      case 'Browse Requests':
-        return `/${params.locale}/${portal}/browse-requests`;
-      case 'Donation History':
-        return `/${params.locale}/${portal}/donation-history`;
-      case 'Submit Request':
-        return `/${params.locale}/${portal}/submit-request`;
-      case 'Track Requests':
-        return `/${params.locale}/${portal}/track-requests`;
-      case 'Profile':
-        return `/${params.locale}/${portal}/profile`;
-      case 'Logout':
-        return `/${params.locale}/${portal}/logout`;
-      default:
-        return '';
-    }
-  };
-
-  const memoizedIcon = useMemo(() => getIconByType(type), [type]);
-
-  const memoizedLink = useMemo(() => getLinkByType(type), [type]);
+  const memoizedListItemData = useMemo(() => getListItemData(type), [type]);
 
   return (
-    <Link href={memoizedLink}>
+    <Link href={memoizedListItemData?.href ? memoizedListItemData.href : '/'}>
       <ListItem style={{ cursor: 'pointer' }}>
-        <ListItemIcon>{memoizedIcon}</ListItemIcon>
-        <ListItemText primary={type} />
+        <ListItemIcon>{memoizedListItemData?.icon}</ListItemIcon>
+        <ListItemText primary={memoizedListItemData?.text} />
       </ListItem>
     </Link>
   );
