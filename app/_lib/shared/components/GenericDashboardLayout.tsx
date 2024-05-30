@@ -15,7 +15,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { TListItemType } from './sIdebar/primitives/SidebarListItem';
-import { TPortalType } from '../../../types/shared';
+import { TPortalType } from '../../types/shared';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslations } from 'next-intl';
 

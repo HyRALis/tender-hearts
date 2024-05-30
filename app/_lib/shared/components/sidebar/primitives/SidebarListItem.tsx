@@ -1,13 +1,13 @@
-import { TAdminListItem } from '@/app/types/admin';
+import { TAdminListItem } from '@/app/_lib/types/admin';
 import { ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import React, { FC, useMemo } from 'react';
-import { TDonorListItem } from '@/app/types/donor';
-import { TRequesterListItem } from '@/app/types/requester';
+import { TDonorListItem } from '@/app/_lib/types/donor';
+import { TRequesterListItem } from '@/app/_lib/types/requester';
 import Link from 'next/link';
-import { TPortalType } from '@/app/types/shared';
+import { TPortalType } from '@/app/_lib/types/shared';
 import { useParams } from 'next/navigation';
 
 export type TListItemType =

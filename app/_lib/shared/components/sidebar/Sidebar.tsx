@@ -6,7 +6,7 @@ import React, { FC } from 'react';
 import { Divider, IconButton, List } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { SidebarListItem, TListItemType } from './primitives/SidebarListItem';
-import { TPortalType } from '@/app/types/shared';
+import { TPortalType } from '@/app/_lib/types/shared';
 
 export interface SidebarProps {
   isOpen: boolean;
