@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { TPortalType } from '@/app/_lib/types/shared';
 import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { COLORS } from '../../../utils/consts';
 
 export type TListItemType =
   | TAdminListItem
@@ -96,8 +97,10 @@ export const SidebarListItem: FC<ListItemProps> = ({ type, portal }) => {
 
   return (
     <Link href={memoizedListItemData?.href ? memoizedListItemData.href : '/'}>
-      <ListItem style={{ cursor: 'pointer' }}>
-        <ListItemIcon>{memoizedListItemData?.icon}</ListItemIcon>
+      <ListItem style={{ cursor: 'pointer', color: COLORS.NATURAL }}>
+        <ListItemIcon style={{ color: COLORS.NATURAL }}>
+          {memoizedListItemData?.icon}
+        </ListItemIcon>
         <ListItemText primary={memoizedListItemData?.text} />
       </ListItem>
     </Link>
