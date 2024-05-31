@@ -6,7 +6,7 @@ import { MenuItem, Box, Menu, Button } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import { useParams, usePathname } from 'next/navigation';
 import { locales } from '@/i18n';
-import { COLORS } from '../utils/consts';
+import { COLORS } from '../../../utils/consts';
 
 const LanguageSwitcherMenuVariant: React.FC = () => {
   const { push } = useRouter();

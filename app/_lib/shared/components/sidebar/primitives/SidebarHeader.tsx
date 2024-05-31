@@ -3,7 +3,7 @@ import { DrawerHeader } from '../../../utils/materialStyling';
 import { Box, IconButton, Typography } from '@mui/material';
 import { SidebarAvatar } from './SidebarAvatar';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import LanguageSwitcherMenuVariant from '../../LanguageSwitcherMenuVariant';
+import LanguageSwitcherMenuVariant from '../../ui/language-switcher/LanguageSwitcherMenuVariant';
 import { TRole } from '@/app/_lib/types/shared';
 import { COLORS } from '../../../utils/consts';
 import { grey } from '@mui/material/colors';

@@ -2,13 +2,13 @@
 
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTranslations } from 'next-intl';
-import LanguageSwitcher from '../_lib/shared/components/LanguageSwitcher';
+import LanguageSwitcher from '../_lib/shared/components/ui/language-switcher/LanguageSwitcher';
 import { useParams } from 'next/navigation';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
-import { DemoCard } from '../_lib/landing/ui/DemoCard';
+import { DemoCard } from '../_lib/landing/components/ui/DemoCard';
 
 export default function Index() {
   const t = useTranslations('Index');

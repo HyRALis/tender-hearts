@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { TPortalType } from '../../types/shared';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from './ui/language-switcher/LanguageSwitcher';
 import { useTranslations } from 'next-intl';
 import { TListItemType } from './sidebar/primitives/SidebarListItem';
 import { AppBarStyled } from '../utils/materialStyling';
