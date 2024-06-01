@@ -1,3 +1,4 @@
+import { FlexBox } from '@/app/_lib/shared/components/ui/primitives/FlexBox';
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import Link from 'next/link';
@@ -17,7 +18,7 @@ export const DemoCard = ({
       <Link href={link}>
         <Card
           variant='elevation'
-          style={{
+          sx={{
             background: grey[800],
             color: grey[50],
             width: '100%',
@@ -30,7 +31,7 @@ export const DemoCard = ({
           }}
         >
           <CardContent
-            style={{
+            sx={{
               display: 'flex',
               justifyContent: 'center',
               alignContent: 'center',
@@ -41,16 +42,15 @@ export const DemoCard = ({
             <Typography variant='h5' component='h3'>
               {text}
             </Typography>
-            <Box
-              style={{
-                display: 'flex',
+            <FlexBox
+              sx={{
                 justifyContent: 'center',
                 alignItems: 'center',
                 marginTop: '1rem',
               }}
             >
               {children}
-            </Box>
+            </FlexBox>
           </CardContent>
         </Card>
       </Link>

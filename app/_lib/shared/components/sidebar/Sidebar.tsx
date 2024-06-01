@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import { Box, Divider, IconButton, List } from '@mui/material';
 import { SidebarListItem, TListItemType } from './primitives/SidebarListItem';
 import { TPortalType } from '@/app/_lib/types/shared';
-import { DrawerHeader, DrawerStyled } from '../../utils/materialStyling';
 import { SidebarHeader } from './primitives/SidebarHeader';
 import { SidebarMainCard } from './primitives/SidebarMainCard';
 import { useTranslations } from 'next-intl';
+import { DrawerStyled } from '../../utils/modified-components/drawer';
+import { FlexBox } from '../ui/primitives/FlexBox';
 
 export interface SidebarProps {
   isOpen: boolean;
@@ -38,10 +39,10 @@ export const Sidebar: FC<SidebarProps> = ({
   ];
 
   return (
-    <DrawerStyled variant='permanent' open={isOpen}>
+    <DrawerStyled variant='permanent' anchor='right' open={isOpen}>
       <SidebarHeader username='Petar Trajanoski' role='requester' />
       <Divider />
-      <Box display={'flex'} flexDirection={'column'} padding={'1.5rem 1rem'}>
+      <FlexBox flexDirection={'column'} padding={'1.5rem 1rem'}>
         <SidebarMainCard
           title='Petar Trajanoski'
           subtitle={t('requester')}
@@ -56,7 +57,7 @@ export const Sidebar: FC<SidebarProps> = ({
             />
           ))}
         </List>
-      </Box>
+      </FlexBox>
     </DrawerStyled>
   );
 };

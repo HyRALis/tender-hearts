@@ -29,7 +29,7 @@ const LanguageSwitcher: React.FC = () => {
 
   return (
     <FormControl variant='outlined' size='small'>
-      <InputLabel id='language-switcher-label' style={{ color: grey[300] }}>
+      <InputLabel id='language-switcher-label' sx={{ color: grey[300] }}>
         {t('language')}
       </InputLabel>
       <Select
@@ -37,7 +37,7 @@ const LanguageSwitcher: React.FC = () => {
         value={locale}
         onChange={handleChange}
         label={t('language')}
-        style={{ color: 'white' }}
+        sx={{ color: 'white' }}
       >
         {locales?.map((loc) => (
           <MenuItem key={loc} value={loc}>

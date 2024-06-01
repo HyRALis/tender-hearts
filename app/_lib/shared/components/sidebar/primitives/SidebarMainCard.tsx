@@ -3,11 +3,15 @@ import React, { FC } from 'react';
 import { COLORS } from '../../../utils/consts';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import { grey } from '@mui/material/colors';
+import {
+  VerticalInfoGroup,
+  VerticalInfoGroupProps,
+} from '../../ui/primitives/VerticalInfoGroup';
 
 export interface SidebarMainCardProps {
   title: string;
   subtitle: string;
-  stats: SubcardElementProps[];
+  stats: VerticalInfoGroupProps[];
 }
 export const SidebarMainCard: FC<SidebarMainCardProps> = ({
   title,
@@ -17,7 +21,7 @@ export const SidebarMainCard: FC<SidebarMainCardProps> = ({
   return (
     <Paper
       elevation={4}
-      style={{
+      sx={{
         backgroundColor: COLORS.PRIMARY_LIGHT,
         color: COLORS.NATURAL,
         padding: '1.2rem',
@@ -40,7 +44,7 @@ export const SidebarMainCard: FC<SidebarMainCardProps> = ({
       </Box>
       <Paper
         elevation={0}
-        style={{
+        sx={{
           backgroundColor: COLORS.PRIMARY,
           color: COLORS.NATURAL,
           padding: '1.2rem',
@@ -50,50 +54,12 @@ export const SidebarMainCard: FC<SidebarMainCardProps> = ({
         }}
       >
         {stats.map((stat, index) => (
-          <SubcardElement
+          <VerticalInfoGroup
             key={`${stat.title}_${stat.value}_${index}`}
             {...stat}
           />
         ))}
       </Paper>
     </Paper>
-  );
-};
-
-interface SubcardElementProps {
-  title: string;
-  value: string | number;
-}
-
-const SubcardElement: FC<SubcardElementProps> = ({ title, value }) => {
-  return (
-    <Box
-      display={'flex'}
-      alignItems={'center'}
-      flexDirection={'column'}
-      justifyContent={'center'}
-      flexShrink={1}
-      whiteSpace={'pre-wrap'}
-    >
-      <Typography
-        component={'p'}
-        fontSize={'0.75rem'}
-        fontWeight={'bold'}
-        color={grey['400']}
-        textTransform={'capitalize'}
-        textAlign={'center'}
-      >
-        {title}
-      </Typography>
-      <Typography
-        component={'p'}
-        fontSize={'1.2rem'}
-        fontWeight={'bold'}
-        color={COLORS.ACCENT}
-        textAlign={'center'}
-      >
-        {value}
-      </Typography>
-    </Box>
   );
 };

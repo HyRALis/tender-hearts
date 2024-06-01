@@ -43,7 +43,7 @@ const LanguageSwitcherMenuVariant: React.FC = () => {
         aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        style={{
+        sx={{
           color: COLORS.NATURAL,
           textTransform: 'uppercase',
           padding: '5px',

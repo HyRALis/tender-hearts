@@ -7,3 +7,5 @@ export const COLORS = {
   NATURAL: '#FFFFFF',
   NATURAL_TWO: '#D3D3D3',
 };
+
+export const DRAWER_WIDTH = 320;

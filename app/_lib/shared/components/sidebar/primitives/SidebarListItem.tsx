@@ -97,8 +97,8 @@ export const SidebarListItem: FC<ListItemProps> = ({ type, portal }) => {
 
   return (
     <Link href={memoizedListItemData?.href ? memoizedListItemData.href : '/'}>
-      <ListItem style={{ cursor: 'pointer', color: COLORS.NATURAL }}>
-        <ListItemIcon style={{ color: COLORS.NATURAL }}>
+      <ListItem sx={{ cursor: 'pointer', color: COLORS.NATURAL }}>
+        <ListItemIcon sx={{ color: COLORS.NATURAL }}>
           {memoizedListItemData?.icon}
         </ListItemIcon>
         <ListItemText primary={memoizedListItemData?.text} />

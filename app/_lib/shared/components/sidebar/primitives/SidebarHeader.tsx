@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { DrawerHeader } from '../../../utils/materialStyling';
 import { Box, IconButton, Typography } from '@mui/material';
 import { SidebarAvatar } from './SidebarAvatar';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -7,6 +6,8 @@ import LanguageSwitcherMenuVariant from '../../ui/language-switcher/LanguageSwit
 import { TRole } from '@/app/_lib/types/shared';
 import { COLORS } from '../../../utils/consts';
 import { grey } from '@mui/material/colors';
+import { DrawerHeader } from '../../../utils/modified-components/drawer';
+import { FlexBox } from '../../ui/primitives/FlexBox';
 
 export interface SidebarHeaderProps {
   username: string;
@@ -15,16 +16,16 @@ export interface SidebarHeaderProps {
 export const SidebarHeader: FC<SidebarHeaderProps> = ({ username, role }) => {
   return (
     <DrawerHeader
-      style={{
+      sx={{
         display: 'flex',
         justifyContent: 'space-between',
         color: COLORS.NATURAL,
         padding: '1rem',
       }}
     >
-      <Box display={'flex'} alignItems={'center'}>
+      <FlexBox alignItems={'center'}>
         <IconButton
-          style={{
+          sx={{
             color: COLORS.NATURAL,
             padding: '2px',
           }}
@@ -32,10 +33,9 @@ export const SidebarHeader: FC<SidebarHeaderProps> = ({ username, role }) => {
           <NotificationsIcon />
         </IconButton>
         <LanguageSwitcherMenuVariant />
-      </Box>
-      <Box display={'flex'} alignItems={'center'} justifyContent={'flex-end'}>
-        <Box
-          display={'flex'}
+      </FlexBox>
+      <FlexBox alignItems={'center'} justifyContent={'flex-end'}>
+        <FlexBox
           alignItems={'flex-end'}
           flexDirection={'column'}
           marginRight={'1rem'}
@@ -51,9 +51,9 @@ export const SidebarHeader: FC<SidebarHeaderProps> = ({ username, role }) => {
           >
             {role}
           </Typography>
-        </Box>
+        </FlexBox>
         <SidebarAvatar username={username} />
-      </Box>
+      </FlexBox>
     </DrawerHeader>
   );
 };

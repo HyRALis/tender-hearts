@@ -17,6 +17,7 @@ import { useTranslations } from 'next-intl';
 import { TListItemType } from './sidebar/primitives/SidebarListItem';
 import { AppBarStyled } from '../utils/materialStyling';
 import { Sidebar } from './sidebar/Sidebar';
+import { FlexBox } from './ui/primitives/FlexBox';
 
 export default function GenericDashboardLayout({
   children,
@@ -40,9 +41,8 @@ export default function GenericDashboardLayout({
     setOpen(false);
   };
   return (
-    <div
-      style={{
-        display: 'flex',
+    <FlexBox
+      sx={{
         background: 'white',
         height: '100vh',
         paddingTop: '68px',
@@ -56,7 +56,10 @@ export default function GenericDashboardLayout({
             justifyContent={'space-between'}
             width={'100%'}
           >
-            <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+            <FlexBox
+              flexDirection={'row'}
+              alignItems={'center'}
+            >
               <IconButton
                 color='inherit'
                 aria-label='open drawer'
@@ -66,15 +69,18 @@ export default function GenericDashboardLayout({
               >
                 <MenuIcon />
               </IconButton>
-              <Box display={'flex'} flexDirection={'row'} alignItems={'center'}>
+              <FlexBox
+                flexDirection={'row'}
+                alignItems={'center'}
+              >
                 <Typography variant='h5' noWrap>
                   {`${t('title')}`}
                 </Typography>
                 <Typography variant='h6' noWrap>
                   {` | ${pageName}`}
                 </Typography>
-              </Box>
-            </Box>
+              </FlexBox>
+            </FlexBox>
             <LanguageSwitcher />
           </Stack>
         </Toolbar>
@@ -85,8 +91,9 @@ export default function GenericDashboardLayout({
         items={sidebarItems}
         portal={portal}
       />
-      <main
-        style={{
+      <Box
+        component={'main'}
+        sx={{
           flexGrow: 1,
           padding: '24px',
           height: '100%',
@@ -94,7 +101,7 @@ export default function GenericDashboardLayout({
         }}
       >
         <Container>{children}</Container>
-      </main>
-    </div>
+      </Box>
+    </FlexBox>
   );
 }

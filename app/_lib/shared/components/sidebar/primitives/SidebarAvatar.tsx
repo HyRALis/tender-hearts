@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { FC } from 'react';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { COLORS } from '../../../utils/consts';
+import { FlexBox } from '../../ui/primitives/FlexBox';
 
 export interface SidebarAvatarProps {
   username: string;
@@ -15,23 +16,21 @@ export const SidebarAvatar: FC<SidebarAvatarProps> = ({
 }) => {
   const baseSize = 40;
   return (
-    <Box
+    <FlexBox
       borderRadius={'50%'}
       width={`${baseSize + 2}px`}
       height={`${baseSize + 2}px`}
       border={`1px solid ${COLORS.ACCENT}`}
       position={'relative'}
-      display={'flex'}
       justifyContent={'center'}
       alignItems={'center'}
     >
-      <Box
+      <FlexBox
         borderRadius={'50%'}
         width={`${baseSize}px`}
         height={`${baseSize}px`}
         overflow={'hidden'}
         textAlign={'center'}
-        display={'flex'}
         justifyContent={'center'}
         alignItems={'center'}
       >
@@ -45,7 +44,7 @@ export const SidebarAvatar: FC<SidebarAvatarProps> = ({
           }
           alt={`${username} avatar`}
         />
-      </Box>
+      </FlexBox>
       <Box
         position={'absolute'}
         top={'-2px'}
@@ -64,6 +63,6 @@ export const SidebarAvatar: FC<SidebarAvatarProps> = ({
       >
         <ArrowUpwardIcon fontSize='inherit' />
       </Box>
-    </Box>
+    </FlexBox>
   );
 };

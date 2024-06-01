@@ -9,7 +9,7 @@ export const PaperStyled: FC<PaperTypeMap<{}, 'div'> & PropsWithChildren> = ({
   return (
     <Paper
       elevation={4}
-      style={{
+      sx={{
         backgroundColor: COLORS.PRIMARY_LIGHT,
         color: COLORS.NATURAL,
         padding: '1.2rem',

@@ -17,7 +17,7 @@ export default function Index() {
   return (
     <Box width={'100%'} height={'100%'} marginTop={'2rem'}>
       <Container
-        style={{
+        sx={{
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -54,26 +54,22 @@ export default function Index() {
         >
           <DemoCard text={t('admin')} link={`/${locale}/admin/dashboard`}>
             <AdminPanelSettingsIcon
-              style={{ marginTop: '1.2rem', fontSize: '3rem' }}
+              sx={{ marginTop: '1.2rem', fontSize: '3rem' }}
             />
           </DemoCard>
           <DemoCard text={t('donor')} link={`/${locale}/donor/dashboard`}>
             <VolunteerActivismIcon
-              style={{ marginTop: '1.2rem', fontSize: '3rem' }}
+              sx={{ marginTop: '1.2rem', fontSize: '3rem' }}
             />
           </DemoCard>
           <DemoCard
             text={t('requester')}
             link={`/${locale}/requester/dashboard`}
           >
-            <RequestPageIcon
-              style={{ marginTop: '1.2rem', fontSize: '3rem' }}
-            />
+            <RequestPageIcon sx={{ marginTop: '1.2rem', fontSize: '3rem' }} />
           </DemoCard>
           <DemoCard text={t('reviewer')} link={`/${locale}/reviewer/dashboard`}>
-            <TrackChangesIcon
-              style={{ marginTop: '1.2rem', fontSize: '3rem' }}
-            />
+            <TrackChangesIcon sx={{ marginTop: '1.2rem', fontSize: '3rem' }} />
           </DemoCard>
         </Grid>
       </Container>
