@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, colors, Paper, Typography } from '@mui/material';
 import React, { FC } from 'react';
 import { COLORS } from '../../../utils/consts';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
@@ -36,8 +36,18 @@ export const SidebarMainCard: FC<SidebarMainCardProps> = ({
       >
         {title}
       </Typography>
-      <Box display={'flex'} alignItems={'center'} marginBottom={'1.5rem'}>
-        <Typography component={'p'} fontSize={'1rem'} paddingRight={'0.5rem'}>
+      <Box
+        display={'flex'}
+        alignItems={'center'}
+        marginBottom={'1.5rem'}
+        color={COLORS.ACCENT}
+      >
+        <Typography
+          component={'p'}
+          fontSize={'1rem'}
+          paddingRight={'0.5rem'}
+          color={COLORS.NATURAL}
+        >
           {subtitle}
         </Typography>
         <CheckCircleRoundedIcon fontSize='small' />

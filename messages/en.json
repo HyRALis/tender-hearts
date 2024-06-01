@@ -28,7 +28,19 @@
     "admin": "Admin",
     "donor": "Donor",
     "requester": "Requester",
-    "reviewer": "Reviewer"
+    "reviewer": "Reviewer",
+    "general_overview": "General overview",
+    "requests_donated": "Donated on requests",
+    "total_request": "Total requests",
+    "total_donations": "Total donations",
+    "success_cases": "Success cases",
+    "donation_average": "Average donation",
+    "number_donations": "Number of donations",
+    "requests_viewed": "Requests viewed",
+    "donated": "Donated",
+    "requests": "Requests",
+    "donations_per_view": "Donations per view",
+    "collected": "Collected"
   },
   "Admin": {
     "title": "Tender hearts",

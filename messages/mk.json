@@ -28,7 +28,19 @@
     "admin": "Администратор",
     "donor": "Донатор",
     "requester": "Барател",
-    "reviewer": "Прегледувач"
+    "reviewer": "Прегледувач",
+    "general_overview": "Генерален преглед",
+    "requests_donated": "Донирано на барања",
+    "total_request": "Вкупно барања",
+    "total_donations": "Вкупни донации",
+    "success_cases": "Успешни случаи",
+    "donation_average": "Просек на донации",
+    "number_donations": "Број на донации",
+    "requests_viewed": "Прегледани барања",
+    "donated": "Донирани",
+    "requests": "Барања",
+    "donations_per_view": "Донации по преглед",
+    "collected": "Собрани"
   },
   "Admin": {
     "title": "Нежни срца",

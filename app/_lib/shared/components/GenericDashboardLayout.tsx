@@ -18,6 +18,7 @@ import { TListItemType } from './sidebar/primitives/SidebarListItem';
 import { AppBarStyled } from '../utils/materialStyling';
 import { Sidebar } from './sidebar/Sidebar';
 import { FlexBox } from './ui/primitives/FlexBox';
+import { useGenerateSidebarItems } from '../hooks/useGenerateSidebarItems';
 
 export default function GenericDashboardLayout({
   children,
@@ -31,6 +32,9 @@ export default function GenericDashboardLayout({
   portal: TPortalType;
 }>) {
   const t = useTranslations('Shared');
+  const { generateSidebarMainStats, generateSidebarMenuItem } =
+    useGenerateSidebarItems();
+
   const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
@@ -40,6 +44,7 @@ export default function GenericDashboardLayout({
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   return (
     <FlexBox
       sx={{
@@ -90,6 +95,12 @@ export default function GenericDashboardLayout({
         handleDrawerClose={handleDrawerClose}
         items={sidebarItems}
         portal={portal}
+        stats={(function () {
+          return generateSidebarMainStats(portal);
+        })()}
+        mainInfoItems={(function () {
+          return generateSidebarMenuItem(portal);
+        })()}
       />
       <Box
         component={'main'}

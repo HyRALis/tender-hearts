@@ -6,13 +6,14 @@ import {
   VerticalInfoGroupProps,
 } from '../../ui/primitives/VerticalInfoGroup';
 
-export interface SidebarMainInfoProps extends VerticalInfoGroupProps {
+export interface SidebarMainInfoProps {
   icon: ReactNode;
+  infoGroups: VerticalInfoGroupProps[];
 }
 
 export const SidebarMainInfo: FC<SidebarMainInfoProps> = ({
   icon,
-  ...rest
+  infoGroups,
 }) => {
   return (
     <Paper
@@ -30,15 +31,18 @@ export const SidebarMainInfo: FC<SidebarMainInfoProps> = ({
         <Paper
           elevation={4}
           sx={{
-            backgroundColor: COLORS.PRIMARY_LIGHT,
+            backgroundColor: COLORS.ACCENT,
             color: COLORS.NATURAL,
             padding: '1.2rem',
             borderRadius: '0.8rem',
+            marginRight: '1rem',
           }}
         >
           {icon}
         </Paper>
-        <VerticalInfoGroup {...rest} />
+        {infoGroups.map((info) => (
+          <VerticalInfoGroup key={`${info.title}_${info.value}`} {...info} />
+        ))}
       </Box>
     </Paper>
   );
