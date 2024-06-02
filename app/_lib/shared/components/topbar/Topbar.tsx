@@ -1,6 +1,12 @@
 'use client';
 
-import { AppBar, Toolbar, useScrollTrigger } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Container,
+  Toolbar,
+  useScrollTrigger,
+} from '@mui/material';
 import React, { FC, ReactElement } from 'react';
 import {
   NavigationTabs,
@@ -27,9 +33,14 @@ export const Topbar: FC<NavigationTabsProps> = ({ portal, tabs }) => {
   return (
     <ElevationScroll>
       <AppBar sx={{ backgroundColor: 'transparent' }}>
-        <Toolbar>
-          <NavigationTabs tabs={tabs} portal={portal} />
-        </Toolbar>
+        <Box width={'calc(100% - 440px)'} height={'100%'} marginRight={'440px'}>
+          <Container>
+            <Toolbar>
+              <NavigationTabs tabs={tabs} portal={portal} />
+            </Toolbar>
+          </Container>
+        </Box>
+        <Container></Container>
       </AppBar>
     </ElevationScroll>
   );

@@ -40,7 +40,12 @@
     "donated": "Донирани",
     "requests": "Барања",
     "donations_per_view": "Донации по преглед",
-    "collected": "Собрани"
+    "collected": "Собрани",
+    "donor_name": "Име на донатор",
+    "date_time": "Датум и време",
+    "payment_method": "Начин на плаќање",
+    "donation_amount": "Вредност на донација",
+    "message": "Порака"
   },
   "Admin": {
     "title": "Нежни срца",

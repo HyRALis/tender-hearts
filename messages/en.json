@@ -40,7 +40,12 @@
     "donated": "Donated",
     "requests": "Requests",
     "donations_per_view": "Donations per view",
-    "collected": "Collected"
+    "collected": "Collected",
+    "donor_name": "Donor name",
+    "date_time": "Date & time",
+    "payment_method": "Payment_method",
+    "donation_amount": "Donation amount",
+    "message": "Message"
   },
   "Admin": {
     "title": "Tender hearts",

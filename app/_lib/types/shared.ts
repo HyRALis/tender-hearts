@@ -25,3 +25,22 @@ export type TListItemType =
 export type TAlignmentText = 'left' | 'right' | 'center';
 
 export type TAlignmentFlex = 'start' | 'end' | 'center';
+
+export type TOrder = 'asc' | 'desc';
+
+export type TPaymentMethods = 'credit' | 'debit' | 'paypal';
+
+export interface TDonationTableRowData {
+  donorName: string;
+  dateTime: string;
+  paymentMethod: TPaymentMethods;
+  donationAmount: number;
+  message: string;
+}
+
+export interface TDonationTableHeadCellProps {
+  disablePadding: boolean;
+  id: keyof TDonationTableRowData;
+  label: string;
+  numeric: boolean;
+}
