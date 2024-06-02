@@ -31,5 +31,6 @@ export const requesterTabs: TListItemType[] = [
   'Dashboard',
   'Submit Request',
   'Track Requests',
+  'Donation History',
   'Profile',
 ];

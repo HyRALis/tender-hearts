@@ -42,7 +42,7 @@ function getComparator<Key extends keyof any>(
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-export default function EnhancedTable() {
+export default function DonationHistoryTable() {
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] =
     React.useState<keyof TDonationTableRowData>('donorName');
