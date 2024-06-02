@@ -19,12 +19,19 @@ export const useGetNavigationItem = ({ portal }: { portal: TPortalType }) => {
           icon: <HomeIcon aria-label='Dashboard' />,
           value: '/dashboard',
         };
+      case 'Manage Users':
+        return {
+          text: t('manage_users'),
+          href: `/${params.locale}/${portal}/manage-users`,
+          icon: <AccountCircleIcon aria-label='Manage users' />,
+          value: '/manage-users',
+        };
       case 'Manage Requests':
         return {
           text: t('manage_requests'),
-          href: `/${params.locale}/${portal}/manage-users`,
+          href: `/${params.locale}/${portal}/manage-requests`,
           icon: <AccountCircleIcon aria-label='Manage Requests' />,
-          value: '/manage-users',
+          value: '/manage-requests',
         };
       case 'Reports':
         return {
@@ -76,7 +83,12 @@ export const useGetNavigationItem = ({ portal }: { portal: TPortalType }) => {
           value: '/logout',
         };
       default:
-        return null;
+        return {
+          text: t('home'),
+          href: `/${params.locale}`,
+          icon: <ExitToAppIcon aria-label='home' />,
+          value: '/',
+        };
     }
   };
 

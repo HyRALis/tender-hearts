@@ -20,7 +20,8 @@ export enum RoleEnum {
 export type TListItemType =
   | TAdminListItem
   | TDonorListItem
-  | TRequesterListItem;
+  | TRequesterListItem
+  | 'Home';
 
 export type TAlignmentText = 'left' | 'right' | 'center';
 

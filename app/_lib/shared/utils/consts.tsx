@@ -18,6 +18,7 @@ export const donorTabs: TListItemType[] = [
   'Browse Requests',
   'Donation History',
   'Profile',
+  'Home',
 ];
 
 export const adminTabs: TListItemType[] = [
@@ -25,6 +26,7 @@ export const adminTabs: TListItemType[] = [
   'Manage Users',
   'Manage Requests',
   'Reports',
+  'Home',
 ];
 
 export const requesterTabs: TListItemType[] = [
@@ -33,4 +35,5 @@ export const requesterTabs: TListItemType[] = [
   'Track Requests',
   'Donation History',
   'Profile',
+  'Home',
 ];

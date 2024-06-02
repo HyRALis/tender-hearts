@@ -29,6 +29,7 @@
     "donor": "Donor",
     "requester": "Requester",
     "reviewer": "Reviewer",
+    "home": "Home",
     "general_overview": "General overview",
     "requests_donated": "Donated on requests",
     "total_request": "Total requests",
