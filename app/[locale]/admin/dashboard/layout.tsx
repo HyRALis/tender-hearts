@@ -1,5 +1,5 @@
 import GenericDashboardLayout from '@/app/_lib/shared/components/GenericDashboardLayout';
-import { TListItemType } from '@/app/_lib/shared/components/sidebar/primitives/SidebarListItem';
+import { TListItemType } from '@/app/_lib/types/shared';
 import { useTranslations } from 'next-intl';
 import { Inter } from 'next/font/google';
 
@@ -21,11 +21,7 @@ export default function AdminDashboardLayout({
   ];
 
   return (
-    <GenericDashboardLayout
-      sidebarItems={sidebarItems}
-      pageName={t('admin')}
-      portal={'admin'}
-    >
+    <GenericDashboardLayout sidebarItems={sidebarItems} portal={'admin'}>
       {children}
     </GenericDashboardLayout>
   );
