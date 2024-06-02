@@ -1,7 +1,8 @@
+import DonationHistoryTable from '@/app/_lib/shared/components/donation-history/DonationHistoryTable';
 import React from 'react';
 
 const Dashboard = () => {
-  return <div>Welcome to admin dashboard</div>;
+  return <DonationHistoryTable />;
 };
 
 export default Dashboard;
