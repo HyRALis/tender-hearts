@@ -8,31 +8,31 @@ export const useGenerateTableHeads = () => {
   const headCells: readonly TDonationTableHeadCellProps[] = [
     {
       id: 'donorName',
-      numeric: false,
+      align: 'left',
       disablePadding: true,
       label: t('donor_name'),
     },
     {
       id: 'dateTime',
-      numeric: false,
+      align: 'right',
       disablePadding: false,
       label: t('date_time'),
     },
     {
       id: 'paymentMethod',
-      numeric: false,
+      align: 'right',
       disablePadding: false,
       label: t('payment_method'),
     },
     {
       id: 'donationAmount',
-      numeric: true,
+      align: 'right',
       disablePadding: false,
       label: t('donation_amount'),
     },
     {
       id: 'message',
-      numeric: false,
+      align: 'right',
       disablePadding: false,
       label: t('message'),
     },

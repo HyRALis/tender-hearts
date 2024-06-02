@@ -42,5 +42,5 @@ export interface TDonationTableHeadCellProps {
   disablePadding: boolean;
   id: keyof TDonationTableRowData;
   label: string;
-  numeric: boolean;
+  align: 'right' | 'left';
 }
