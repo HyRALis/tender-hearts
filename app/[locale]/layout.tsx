@@ -2,6 +2,7 @@ import { CssBaseline } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import '../globals.css';
 
@@ -19,6 +20,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body style={{ width: '100vw', height: '100vh', background: grey[900] }}>
+        <SpeedInsights />
         <NextIntlClientProvider messages={messages}>
           <CssBaseline />
           {children}
