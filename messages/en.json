@@ -43,10 +43,13 @@
     "collected": "Collected",
     "donor_name": "Donor name",
     "date_time": "Date & time",
-    "payment_method": "Payment_method",
+    "payment_method": "Payment method",
     "donation_amount": "Donation amount",
     "message": "Message",
-    "donations": "Donations"
+    "donations": "Donations",
+    "credit_card": "Credit card",
+    "debit_card": "Debit card",
+    "paypal": "PayPal"
   },
   "Admin": {
     "title": "Tender hearts",

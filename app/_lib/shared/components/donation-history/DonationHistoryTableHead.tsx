@@ -1,17 +1,15 @@
 import { TDonationTableRowData, TOrder } from '@/app/_lib/types/shared';
 import React, { FC } from 'react';
 import { useGenerateTableHeads } from '../../hooks/useGenerateTableHeads';
-import {
-  Box,
-  Checkbox,
-  TableCell,
-  TableHead,
-  TableRow,
-  TableSortLabel,
-} from '@mui/material';
+import { Box, Checkbox, TableHead, TableRow } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
+import { COLORS } from '../../utils/consts';
+import {
+  StyledTableHeadCell,
+  StyledTableHeadTableSortLabel,
+} from '../../utils/modified-components/table';
 
-interface DonationHistoryTableHeadProps {
+export interface DonationHistoryTableHeadProps {
   numSelected: number;
   onRequestSort: (
     event: React.MouseEvent<unknown>,
@@ -41,26 +39,30 @@ export const DonationHistoryTableHead: FC<DonationHistoryTableHeadProps> = ({
 
   return (
     <TableHead>
-      <TableRow>
-        <TableCell padding='checkbox'>
+      <TableRow
+        sx={{
+          backgroundColor: COLORS.PRIMARY_LIGHT,
+        }}
+      >
+        <StyledTableHeadCell padding='checkbox'>
           <Checkbox
             color='primary'
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{
-              'aria-label': 'select all desserts',
+              'aria-label': 'select all donations',
             }}
           />
-        </TableCell>
+        </StyledTableHeadCell>
         {headCells.map((headCell) => (
-          <TableCell
+          <StyledTableHeadCell
             key={headCell.id}
             align={headCell.align}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
-            <TableSortLabel
+            <StyledTableHeadTableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
@@ -71,8 +73,8 @@ export const DonationHistoryTableHead: FC<DonationHistoryTableHeadProps> = ({
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                 </Box>
               ) : null}
-            </TableSortLabel>
-          </TableCell>
+            </StyledTableHeadTableSortLabel>
+          </StyledTableHeadCell>
         ))}
       </TableRow>
     </TableHead>

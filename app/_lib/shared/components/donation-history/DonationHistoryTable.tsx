@@ -10,13 +10,13 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TablePagination,
   TableRow,
 } from '@mui/material';
 import { TDonationTableRowData } from '@/app/_lib/types/shared';
 import { DonationsTableRows } from '../../mocks/DonationsTableRows';
 import { DonationHistoryTableHead } from './DonationHistoryTableHead';
 import { DonationHistoryTableToolbar } from './DonationHistoryTableToolbar';
+import { useTranslations } from 'next-intl';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -43,6 +43,8 @@ function getComparator<Key extends keyof any>(
 }
 
 export default function DonationHistoryTable() {
+  const t = useTranslations('Shared');
+
   const [order, setOrder] = React.useState<Order>('asc');
   const [orderBy, setOrderBy] =
     React.useState<keyof TDonationTableRowData>('donorName');
@@ -89,17 +91,6 @@ export default function DonationHistoryTable() {
     setSelected(newSelected);
   };
 
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
   const isSelected = (id: string) => selected.indexOf(id) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
@@ -117,7 +108,16 @@ export default function DonationHistoryTable() {
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <DonationHistoryTableToolbar numSelected={selected.length} />
+        <DonationHistoryTableToolbar
+          numSelected={selected.length}
+          paginationProps={{
+            count: rows.length,
+            rowsPerPage,
+            page,
+            setPage,
+            setRowsPerPage,
+          }}
+        />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -146,7 +146,9 @@ export default function DonationHistoryTable() {
                     tabIndex={-1}
                     key={row.donorName}
                     selected={isItemSelected}
-                    sx={{ cursor: 'pointer' }}
+                    sx={{
+                      cursor: 'pointer',
+                    }}
                   >
                     <TableCell padding='checkbox'>
                       <Checkbox
@@ -166,7 +168,7 @@ export default function DonationHistoryTable() {
                       {row.donorName}
                     </TableCell>
                     <TableCell align='right'>{row.dateTime}</TableCell>
-                    <TableCell align='right'>{row.paymentMethod}</TableCell>
+                    <TableCell align='right'>{t(row.paymentMethod)}</TableCell>
                     <TableCell align='right'>{row.donationAmount}</TableCell>
                     <TableCell align='right'>{row.message}</TableCell>
                   </TableRow>
@@ -184,15 +186,6 @@ export default function DonationHistoryTable() {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component='div'
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
       </Paper>
     </Box>
   );

@@ -46,7 +46,10 @@
     "payment_method": "Начин на плаќање",
     "donation_amount": "Вредност на донација",
     "message": "Порака",
-    "donations": "Донации"
+    "donations": "Донации",
+    "credit_card": "Кредитна картичка",
+    "debit_card": "Дебитна картичка",
+    "paypal": "PayPal"
   },
   "Admin": {
     "title": "Нежни срца",

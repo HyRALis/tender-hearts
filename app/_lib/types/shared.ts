@@ -28,7 +28,7 @@ export type TAlignmentFlex = 'start' | 'end' | 'center';
 
 export type TOrder = 'asc' | 'desc';
 
-export type TPaymentMethods = 'credit' | 'debit' | 'paypal';
+export type TPaymentMethods = 'credit_card' | 'debit_card' | 'paypal';
 
 export interface TDonationTableRowData {
   donorName: string;
