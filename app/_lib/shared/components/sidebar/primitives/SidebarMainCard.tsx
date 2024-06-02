@@ -1,12 +1,12 @@
-import { Box, colors, Paper, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import React, { FC } from 'react';
 import { COLORS } from '../../../utils/consts';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
-import { grey } from '@mui/material/colors';
 import {
   VerticalInfoGroup,
   VerticalInfoGroupProps,
 } from '../../ui/primitives/VerticalInfoGroup';
+import { FlexBox } from '../../ui/primitives/FlexBox';
 
 export interface SidebarMainCardProps {
   title: string;
@@ -63,12 +63,14 @@ export const SidebarMainCard: FC<SidebarMainCardProps> = ({
           overflow: 'hidden',
         }}
       >
-        {stats.map((stat, index) => (
-          <VerticalInfoGroup
-            key={`${stat.title}_${stat.value}_${index}`}
-            {...stat}
-          />
-        ))}
+        <FlexBox gap={'1rem'}>
+          {stats.map((stat, index) => (
+            <VerticalInfoGroup
+              key={`${stat.title}_${stat.value}_${index}`}
+              {...stat}
+            />
+          ))}
+        </FlexBox>
       </Paper>
     </Paper>
   );

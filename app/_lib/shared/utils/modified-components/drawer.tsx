@@ -1,10 +1,12 @@
+'use client';
+
 import { CSSObject, Drawer, styled, Theme } from '@mui/material';
 import { COLORS, DRAWER_WIDTH } from '../consts';
 
 export const DrawerStyled = styled(Drawer, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<{ open?: boolean }>(({ theme, open }) => ({
-  width: DRAWER_WIDTH,
+  // width: DRAWER_WIDTH,
   flexShrink: 0,
   whiteSpace: 'nowrap',
   boxSizing: 'border-box',
@@ -22,7 +24,7 @@ export const DrawerStyled = styled(Drawer, {
 }));
 
 const openedMixin = (theme: Theme): CSSObject => ({
-  width: DRAWER_WIDTH,
+  // width: DRAWER_WIDTH,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,

@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
-import { Box, Divider, IconButton, List, Typography } from '@mui/material';
-import { SidebarListItem, TListItemType } from './primitives/SidebarListItem';
-import { TPortalType } from '@/app/_lib/types/shared';
+import { Divider, Typography } from '@mui/material';
 import { SidebarHeader } from './primitives/SidebarHeader';
 import { SidebarMainCard } from './primitives/SidebarMainCard';
 import { useTranslations } from 'next-intl';
@@ -15,26 +13,15 @@ import { VerticalInfoGroupProps } from '../ui/primitives/VerticalInfoGroup';
 import { COLORS } from '../../utils/consts';
 
 export interface SidebarProps {
-  isOpen: boolean;
-  handleDrawerClose: () => void;
-  items: TListItemType[];
-  portal: TPortalType;
   stats: VerticalInfoGroupProps[];
   mainInfoItems: SidebarMainInfoProps[];
 }
 
-export const Sidebar: FC<SidebarProps> = ({
-  isOpen,
-  handleDrawerClose,
-  items,
-  portal,
-  stats,
-  mainInfoItems,
-}) => {
+export const Sidebar: FC<SidebarProps> = ({ stats, mainInfoItems }) => {
   const t = useTranslations('Shared');
 
   return (
-    <DrawerStyled variant='permanent' anchor='right' open={isOpen}>
+    <DrawerStyled variant='permanent' anchor='right' open={true}>
       <SidebarHeader username='Petar Trajanoski' role='requester' />
       <Divider sx={{ borderColor: COLORS.PRIMARY_LIGHT, marginX: '0.5rem' }} />
       <FlexBox flexDirection={'column'} padding={'1.5rem 1rem'} gap={'1.5rem'}>
@@ -52,15 +39,6 @@ export const Sidebar: FC<SidebarProps> = ({
             {...info}
           />
         ))}
-        <List>
-          {items.map((item) => (
-            <SidebarListItem
-              key={`Sidebar_${item}`}
-              type={item}
-              portal={portal}
-            />
-          ))}
-        </List>
       </FlexBox>
     </DrawerStyled>
   );

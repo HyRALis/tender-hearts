@@ -1,49 +1,22 @@
-'use client';
-
-import React, { useState } from 'react';
-import {
-  Box,
-  Container,
-  CssBaseline,
-  IconButton,
-  Stack,
-  Toolbar,
-  Typography,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { TPortalType } from '../../types/shared';
-import LanguageSwitcher from './ui/language-switcher/LanguageSwitcher';
-import { useTranslations } from 'next-intl';
-import { TListItemType } from './sidebar/primitives/SidebarListItem';
-import { AppBarStyled } from '../utils/materialStyling';
+import React from 'react';
+import { Box, Container, CssBaseline } from '@mui/material';
+import { TListItemType, TPortalType } from '../../types/shared';
 import { Sidebar } from './sidebar/Sidebar';
 import { FlexBox } from './ui/primitives/FlexBox';
 import { useGenerateSidebarItems } from '../hooks/useGenerateSidebarItems';
+import { Topbar } from './topbar/Topbar';
 
 export default function GenericDashboardLayout({
   children,
   sidebarItems,
-  pageName,
   portal,
 }: Readonly<{
   children: React.ReactNode;
   sidebarItems: TListItemType[];
-  pageName: string;
   portal: TPortalType;
 }>) {
-  const t = useTranslations('Shared');
   const { generateSidebarMainStats, generateSidebarMenuItem } =
     useGenerateSidebarItems();
-
-  const [open, setOpen] = useState(true);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <FlexBox
@@ -54,47 +27,8 @@ export default function GenericDashboardLayout({
       }}
     >
       <CssBaseline />
-      {/* <AppBarStyled position='fixed' open={open}>
-        <Toolbar>
-          <Stack
-            direction={'row'}
-            justifyContent={'space-between'}
-            width={'100%'}
-          >
-            <FlexBox
-              flexDirection={'row'}
-              alignItems={'center'}
-            >
-              <IconButton
-                color='inherit'
-                aria-label='open drawer'
-                onClick={handleDrawerOpen}
-                edge='start'
-                sx={{ marginRight: 5, ...(open && { display: 'none' }) }}
-              >
-                <MenuIcon />
-              </IconButton>
-              <FlexBox
-                flexDirection={'row'}
-                alignItems={'center'}
-              >
-                <Typography variant='h5' noWrap>
-                  {`${t('title')}`}
-                </Typography>
-                <Typography variant='h6' noWrap>
-                  {` | ${pageName}`}
-                </Typography>
-              </FlexBox>
-            </FlexBox>
-            <LanguageSwitcher />
-          </Stack>
-        </Toolbar>
-      </AppBarStyled> */}
+      <Topbar tabs={sidebarItems} portal={portal} />
       <Sidebar
-        isOpen={open}
-        handleDrawerClose={handleDrawerClose}
-        items={sidebarItems}
-        portal={portal}
         stats={(function () {
           return generateSidebarMainStats(portal);
         })()}
@@ -111,7 +45,9 @@ export default function GenericDashboardLayout({
           overflowY: 'auto',
         }}
       >
-        <Container>{children}</Container>
+        <Box width={'calc(100% - 440px)'} height={'100%'} marginRight={'440px'}>
+          <Container>{children}</Container>
+        </Box>
       </Box>
     </FlexBox>
   );
