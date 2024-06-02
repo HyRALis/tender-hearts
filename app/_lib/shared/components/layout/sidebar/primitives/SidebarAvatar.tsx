@@ -2,8 +2,8 @@ import { Box } from '@mui/material';
 import Image from 'next/image';
 import React, { FC } from 'react';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import { COLORS } from '../../../utils/consts';
-import { FlexBox } from '../../ui/primitives/FlexBox';
+import { FlexBox } from '../../../ui/primitives/FlexBox';
+import { COLORS } from '@/app/_lib/shared/utils/consts';
 
 export interface SidebarAvatarProps {
   username: string;

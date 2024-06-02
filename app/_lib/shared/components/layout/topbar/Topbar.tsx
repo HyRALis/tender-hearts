@@ -11,7 +11,7 @@ import React, { FC, ReactElement } from 'react';
 import {
   NavigationTabs,
   NavigationTabsProps,
-} from '../layout/topbar/primitives/NavigationTabs';
+} from './primitives/NavigationTabs';
 
 interface ElevationScrollProps {
   children: ReactElement;

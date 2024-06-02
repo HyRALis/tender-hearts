@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import React, { FC, useMemo, useState } from 'react';
-import { Tabs, Tab, Box } from '@mui/material';
+import { Tabs, Tab } from '@mui/material';
 import Link from 'next/link';
 import { useGetNavigationItem } from '../../../../hooks/useGetNavigationItem';
 import { TListItemType, TPortalType } from '@/app/_lib/types/shared';

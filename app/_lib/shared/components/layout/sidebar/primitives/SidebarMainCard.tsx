@@ -1,12 +1,12 @@
 import { Box, Paper, Typography } from '@mui/material';
 import React, { FC } from 'react';
-import { COLORS } from '../../../utils/consts';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import {
   VerticalInfoGroup,
   VerticalInfoGroupProps,
-} from '../../ui/primitives/VerticalInfoGroup';
-import { FlexBox } from '../../ui/primitives/FlexBox';
+} from '../../../ui/primitives/VerticalInfoGroup';
+import { COLORS } from '@/app/_lib/shared/utils/consts';
+import { FlexBox } from '../../../ui/primitives/FlexBox';
 
 export interface SidebarMainCardProps {
   title: string;

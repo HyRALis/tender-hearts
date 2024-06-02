@@ -1,10 +1,10 @@
 import { Box, Paper } from '@mui/material';
 import React, { FC, ReactNode } from 'react';
-import { COLORS } from '../../../utils/consts';
 import {
   VerticalInfoGroup,
   VerticalInfoGroupProps,
-} from '../../ui/primitives/VerticalInfoGroup';
+} from '../../../ui/primitives/VerticalInfoGroup';
+import { COLORS } from '@/app/_lib/shared/utils/consts';
 
 export interface SidebarMainInfoProps {
   icon: ReactNode;

@@ -1,13 +1,12 @@
-import React, { FC } from 'react';
-import { Box, IconButton, Typography } from '@mui/material';
+import { COLORS } from '@/app/_lib/shared/utils/consts';
+import { DrawerHeader } from '@/app/_lib/shared/utils/modified-components/drawer';
+import { TRole } from '@/app/_lib/types/shared';
+import { FC } from 'react';
+import { FlexBox } from '../../../ui/primitives/FlexBox';
+import { IconButton, Typography } from '@mui/material';
+import LanguageSwitcherMenuVariant from '../../../ui/language-switcher/LanguageSwitcherMenuVariant';
 import { SidebarAvatar } from './SidebarAvatar';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import LanguageSwitcherMenuVariant from '../../ui/language-switcher/LanguageSwitcherMenuVariant';
-import { TRole } from '@/app/_lib/types/shared';
-import { COLORS } from '../../../utils/consts';
-import { grey } from '@mui/material/colors';
-import { DrawerHeader } from '../../../utils/modified-components/drawer';
-import { FlexBox } from '../../ui/primitives/FlexBox';
 
 export interface SidebarHeaderProps {
   username: string;
@@ -47,7 +46,7 @@ export const SidebarHeader: FC<SidebarHeaderProps> = ({ username, role }) => {
             component={'p'}
             textAlign={'end'}
             fontSize={'0.65rem'}
-            color={grey[500]}
+            color={COLORS.NATURAL_TWO}
           >
             {role}
           </Typography>
