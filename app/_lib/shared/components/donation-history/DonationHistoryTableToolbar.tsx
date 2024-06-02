@@ -1,8 +1,6 @@
-import { IconButton, Toolbar, Tooltip, Typography } from '@mui/material';
+import { Toolbar, Typography } from '@mui/material';
 import React, { FC } from 'react';
 import { alpha } from '@mui/material/styles';
-import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import { useTranslations } from 'next-intl';
 
 export interface DonationHistoryTableToolbarProps {
