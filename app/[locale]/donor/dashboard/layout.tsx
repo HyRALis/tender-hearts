@@ -1,6 +1,6 @@
 'use client';
 import GenericDashboardLayout from '@/app/_lib/shared/components/GenericDashboardLayout';
-import { TListItemType } from '@/app/_lib/shared/components/sidebar/primitives/SidebarListItem';
+import { TListItemType } from '@/app/_lib/types/shared';
 import { useTranslations } from 'next-intl';
 import { Inter } from 'next/font/google';
 
@@ -22,11 +22,7 @@ export default function RequesterDashboardLayout({
   ];
 
   return (
-    <GenericDashboardLayout
-      sidebarItems={sidebarItems}
-      pageName={t('donor')}
-      portal={'donor'}
-    >
+    <GenericDashboardLayout sidebarItems={sidebarItems} portal={'donor'}>
       {children}
     </GenericDashboardLayout>
   );
