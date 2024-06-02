@@ -1,6 +1,5 @@
 import GenericDashboardLayout from '@/app/_lib/shared/components/GenericDashboardLayout';
-import { TListItemType } from '@/app/_lib/types/shared';
-import { useTranslations } from 'next-intl';
+import { adminTabs } from '@/app/_lib/shared/utils/consts';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -10,18 +9,8 @@ export default function AdminDashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const t = useTranslations('Admin');
-
-  const tabs: TListItemType[] = [
-    'Dashboard',
-    'Manage Users',
-    'Manage Requests',
-    'Reports',
-    'Logout',
-  ];
-
   return (
-    <GenericDashboardLayout tabs={tabs} portal={'admin'}>
+    <GenericDashboardLayout tabs={adminTabs} portal={'admin'}>
       {children}
     </GenericDashboardLayout>
   );

@@ -1,5 +1,6 @@
 'use client';
 import GenericDashboardLayout from '@/app/_lib/shared/components/GenericDashboardLayout';
+import { donorTabs } from '@/app/_lib/shared/utils/consts';
 import { TListItemType } from '@/app/_lib/types/shared';
 import { useTranslations } from 'next-intl';
 import { Inter } from 'next/font/google';
@@ -11,18 +12,8 @@ export default function RequesterDashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const t = useTranslations('Donor');
-  const tabs: TListItemType[] = [
-    'Dashboard',
-    'Browse Requests',
-    'Manage Requests',
-    'Donation History',
-    'Profile',
-    'Logout',
-  ];
-
   return (
-    <GenericDashboardLayout tabs={tabs} portal={'donor'}>
+    <GenericDashboardLayout tabs={donorTabs} portal={'donor'}>
       {children}
     </GenericDashboardLayout>
   );

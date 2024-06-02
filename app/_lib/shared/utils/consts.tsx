@@ -1,3 +1,5 @@
+import { TListItemType } from '../../types/shared';
+
 export const COLORS = {
   PRIMARY: '#003366',
   PRIMARY_LIGHT: '#0056AC',
@@ -9,3 +11,25 @@ export const COLORS = {
 };
 
 export const DRAWER_WIDTH = 320;
+
+//Tabs per portal
+export const donorTabs: TListItemType[] = [
+  'Dashboard',
+  'Browse Requests',
+  'Donation History',
+  'Profile',
+];
+
+export const adminTabs: TListItemType[] = [
+  'Dashboard',
+  'Manage Users',
+  'Manage Requests',
+  'Reports',
+];
+
+export const requesterTabs: TListItemType[] = [
+  'Dashboard',
+  'Submit Request',
+  'Track Requests',
+  'Profile',
+];

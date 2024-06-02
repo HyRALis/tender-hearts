@@ -1,6 +1,5 @@
 import GenericDashboardLayout from '@/app/_lib/shared/components/GenericDashboardLayout';
-import { TListItemType } from '@/app/_lib/types/shared';
-import { useTranslations } from 'next-intl';
+import { requesterTabs } from '@/app/_lib/shared/utils/consts';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -10,18 +9,8 @@ export default function DonorDashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const t = useTranslations('Requester');
-
-  const tabs: TListItemType[] = [
-    'Dashboard',
-    'Submit Request',
-    'Track Requests',
-    'Profile',
-    'Logout',
-  ];
-
   return (
-    <GenericDashboardLayout tabs={tabs} portal={'requester'}>
+    <GenericDashboardLayout tabs={requesterTabs} portal={'requester'}>
       {children}
     </GenericDashboardLayout>
   );
