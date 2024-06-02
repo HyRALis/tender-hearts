@@ -1,4 +1,4 @@
-import GenericDashboardLayout from '@/app/_lib/shared/components/GenericDashboardLayout';
+import GenericDashboardLayout from '@/app/_lib/shared/components/layout/GenericDashboardLayout';
 import { requesterTabs } from '@/app/_lib/shared/utils/consts';
 import { Inter } from 'next/font/google';
 

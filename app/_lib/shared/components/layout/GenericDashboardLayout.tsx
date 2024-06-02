@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box, Container, CssBaseline } from '@mui/material';
-import { TListItemType, TPortalType } from '../../types/shared';
-import { Sidebar } from './sidebar/Sidebar';
-import { FlexBox } from './ui/primitives/FlexBox';
+import { TListItemType, TPortalType } from '@/app/_lib/types/shared';
+import { useGenerateSidebarItems } from '../../hooks/useGenerateSidebarItems';
+import { FlexBox } from '../ui/primitives/FlexBox';
 import { Topbar } from './topbar/Topbar';
-import { useGenerateSidebarItems } from '../hooks/useGenerateSidebarItems';
+import { Sidebar } from './sidebar/Sidebar';
 
 export default function GenericDashboardLayout({
   children,
