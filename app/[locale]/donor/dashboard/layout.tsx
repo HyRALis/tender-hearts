@@ -12,7 +12,7 @@ export default function RequesterDashboardLayout({
   children: React.ReactNode;
 }>) {
   const t = useTranslations('Donor');
-  const sidebarItems: TListItemType[] = [
+  const tabs: TListItemType[] = [
     'Dashboard',
     'Browse Requests',
     'Manage Requests',
@@ -22,7 +22,7 @@ export default function RequesterDashboardLayout({
   ];
 
   return (
-    <GenericDashboardLayout sidebarItems={sidebarItems} portal={'donor'}>
+    <GenericDashboardLayout tabs={tabs} portal={'donor'}>
       {children}
     </GenericDashboardLayout>
   );

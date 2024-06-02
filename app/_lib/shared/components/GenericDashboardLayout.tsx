@@ -3,16 +3,16 @@ import { Box, Container, CssBaseline } from '@mui/material';
 import { TListItemType, TPortalType } from '../../types/shared';
 import { Sidebar } from './sidebar/Sidebar';
 import { FlexBox } from './ui/primitives/FlexBox';
-import { useGenerateSidebarItems } from '../hooks/useGenerateSidebarItems';
 import { Topbar } from './topbar/Topbar';
+import { useGenerateSidebarItems } from '../hooks/useGenerateSidebarItems';
 
 export default function GenericDashboardLayout({
   children,
-  sidebarItems,
+  tabs,
   portal,
 }: Readonly<{
   children: React.ReactNode;
-  sidebarItems: TListItemType[];
+  tabs: TListItemType[];
   portal: TPortalType;
 }>) {
   const { generateSidebarMainStats, generateSidebarMenuItem } =
@@ -27,7 +27,7 @@ export default function GenericDashboardLayout({
       }}
     >
       <CssBaseline />
-      <Topbar tabs={sidebarItems} portal={portal} />
+      <Topbar tabs={tabs} portal={portal} />
       <Sidebar
         stats={(function () {
           return generateSidebarMainStats(portal);

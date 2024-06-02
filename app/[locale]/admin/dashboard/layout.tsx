@@ -12,7 +12,7 @@ export default function AdminDashboardLayout({
 }>) {
   const t = useTranslations('Admin');
 
-  const sidebarItems: TListItemType[] = [
+  const tabs: TListItemType[] = [
     'Dashboard',
     'Manage Users',
     'Manage Requests',
@@ -21,7 +21,7 @@ export default function AdminDashboardLayout({
   ];
 
   return (
-    <GenericDashboardLayout sidebarItems={sidebarItems} portal={'admin'}>
+    <GenericDashboardLayout tabs={tabs} portal={'admin'}>
       {children}
     </GenericDashboardLayout>
   );

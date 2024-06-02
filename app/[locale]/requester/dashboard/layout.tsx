@@ -12,7 +12,7 @@ export default function DonorDashboardLayout({
 }>) {
   const t = useTranslations('Requester');
 
-  const sidebarItems: TListItemType[] = [
+  const tabs: TListItemType[] = [
     'Dashboard',
     'Submit Request',
     'Track Requests',
@@ -21,7 +21,7 @@ export default function DonorDashboardLayout({
   ];
 
   return (
-    <GenericDashboardLayout sidebarItems={sidebarItems} portal={'requester'}>
+    <GenericDashboardLayout tabs={tabs} portal={'requester'}>
       {children}
     </GenericDashboardLayout>
   );
