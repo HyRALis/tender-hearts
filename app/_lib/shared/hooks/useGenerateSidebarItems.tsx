@@ -1,13 +1,13 @@
 import { useTranslations } from 'next-intl';
-import React, { useRef } from 'react';
+import React from 'react';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import VisibilitySharpIcon from '@mui/icons-material/VisibilitySharp';
 import FlagSharpIcon from '@mui/icons-material/FlagSharp';
 import RequestPageSharpIcon from '@mui/icons-material/RequestPageSharp';
-import { RoleEnum, TPortalType, TRole } from '../../types/shared';
-import { SidebarMainInfoProps } from '../components/sidebar/primitives/SidebarMainInfo';
+import { RoleEnum, TPortalType } from '../../types/shared';
 import { VerticalInfoGroupProps } from '../components/ui/primitives/VerticalInfoGroup';
 import CreditScoreSharpIcon from '@mui/icons-material/CreditScoreSharp';
+import { SidebarMainInfoProps } from '../components/layout/sidebar/primitives/SidebarMainInfo';
 
 interface TSidebarDefaultInfoItems {
   [key: string]: {
