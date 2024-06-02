@@ -49,17 +49,17 @@ export default async function SignInSide() {
         item
         xs={false}
         sm={4}
-        md={7}
+        md={9}
         sx={{
           backgroundImage:
-            'url(https://images.pexels.com/photos/1582736/pexels-photo-1582736.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+            'url(https://images.pexels.com/photos/6646847/pexels-photo-6646847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
           backgroundRepeat: 'no-repeat',
           backgroundColor: grey[50],
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={3} component={Paper} elevation={6} square>
         <Box
           sx={{
             my: 8,
