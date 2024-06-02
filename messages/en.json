@@ -45,7 +45,8 @@
     "date_time": "Date & time",
     "payment_method": "Payment_method",
     "donation_amount": "Donation amount",
-    "message": "Message"
+    "message": "Message",
+    "donations": "Donations"
   },
   "Admin": {
     "title": "Tender hearts",

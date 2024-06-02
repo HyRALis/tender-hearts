@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { alpha } from '@mui/material/styles';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import { useTranslations } from 'next-intl';
 
 export interface DonationHistoryTableToolbarProps {
   numSelected: number;
@@ -11,6 +12,8 @@ export interface DonationHistoryTableToolbarProps {
 export const DonationHistoryTableToolbar: FC<
   DonationHistoryTableToolbarProps
 > = ({ numSelected }) => {
+  const t = useTranslations('Shared');
+
   return (
     <Toolbar
       sx={{
@@ -41,21 +44,8 @@ export const DonationHistoryTableToolbar: FC<
           id='tableTitle'
           component='div'
         >
-          Nutrition
+          {t('donations')}
         </Typography>
-      )}
-      {numSelected > 0 ? (
-        <Tooltip title='Delete'>
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title='Filter list'>
-          <IconButton>
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
       )}
     </Toolbar>
   );
