@@ -17,6 +17,7 @@ import { DonationsTableRows } from '../../mocks/DonationsTableRows';
 import { DonationHistoryTableHead } from './DonationHistoryTableHead';
 import { DonationHistoryTableToolbar } from './DonationHistoryTableToolbar';
 import { useTranslations } from 'next-intl';
+import { COLORS } from '../../utils/consts';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -107,7 +108,7 @@ export default function DonationHistoryTable() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2 }}>
+      <Paper sx={{ width: '100%', mb: 2, borderRadius: '0.8rem' }}>
         <DonationHistoryTableToolbar
           numSelected={selected.length}
           paginationProps={{
@@ -148,6 +149,7 @@ export default function DonationHistoryTable() {
                     selected={isItemSelected}
                     sx={{
                       cursor: 'pointer',
+                      borderBottomColor: 'transparent',
                     }}
                   >
                     <TableCell padding='checkbox'>
@@ -170,7 +172,17 @@ export default function DonationHistoryTable() {
                     <TableCell align='right'>{row.dateTime}</TableCell>
                     <TableCell align='right'>{t(row.paymentMethod)}</TableCell>
                     <TableCell align='right'>{row.donationAmount}</TableCell>
-                    <TableCell align='right'>{row.message}</TableCell>
+                    <TableCell align='right'>
+                      <Paper
+                        sx={{
+                          borderRadius: '0.8rem',
+                          padding: '0.5rem',
+                          backgroundColor: `${COLORS.ACCENT}33`,
+                        }}
+                      >
+                        {row.message}
+                      </Paper>
+                    </TableCell>
                   </TableRow>
                 );
               })}

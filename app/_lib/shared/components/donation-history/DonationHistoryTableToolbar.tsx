@@ -55,8 +55,9 @@ export const DonationHistoryTableToolbar: FC<
           color='inherit'
           variant='subtitle1'
           component='div'
+          textTransform={'lowercase'}
         >
-          {numSelected} selected
+          {`${numSelected} ${t('selected')}`}
         </Typography>
       ) : (
         <Typography

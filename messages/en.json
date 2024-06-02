@@ -49,7 +49,8 @@
     "donations": "Donations",
     "credit_card": "Credit card",
     "debit_card": "Debit card",
-    "paypal": "PayPal"
+    "paypal": "PayPal",
+    "selected": "Selected"
   },
   "Admin": {
     "title": "Tender hearts",
