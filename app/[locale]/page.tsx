@@ -1,18 +1,14 @@
-'use client';
-
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '../_lib/shared/components/ui/language-switcher/LanguageSwitcher';
-import { useParams } from 'next/navigation';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
 import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import { DemoCard } from '../_lib/landing/components/ui/DemoCard';
 
-export default function Index() {
+const Index = ({ params }: { params: { locale: string } }) => {
   const t = useTranslations('Index');
-  const { locale } = useParams<{ locale: string }>();
 
   return (
     <Box width={'100%'} height={'100%'} marginTop={'2rem'}>
@@ -52,27 +48,38 @@ export default function Index() {
           spacing={{ xs: 8 }}
           columns={{ xs: 2 }}
         >
-          <DemoCard text={t('admin')} link={`/${locale}/admin/dashboard`}>
+          <DemoCard
+            text={t('admin')}
+            link={`/${params.locale}/admin/dashboard`}
+          >
             <AdminPanelSettingsIcon
               sx={{ marginTop: '1.2rem', fontSize: '3rem' }}
             />
           </DemoCard>
-          <DemoCard text={t('donor')} link={`/${locale}/donor/dashboard`}>
+          <DemoCard
+            text={t('donor')}
+            link={`/${params.locale}/donor/dashboard`}
+          >
             <VolunteerActivismIcon
               sx={{ marginTop: '1.2rem', fontSize: '3rem' }}
             />
           </DemoCard>
           <DemoCard
             text={t('requester')}
-            link={`/${locale}/requester/dashboard`}
+            link={`/${params.locale}/requester/dashboard`}
           >
             <RequestPageIcon sx={{ marginTop: '1.2rem', fontSize: '3rem' }} />
           </DemoCard>
-          <DemoCard text={t('reviewer')} link={`/${locale}/reviewer/dashboard`}>
+          <DemoCard
+            text={t('reviewer')}
+            link={`/${params.locale}/reviewer/dashboard`}
+          >
             <TrackChangesIcon sx={{ marginTop: '1.2rem', fontSize: '3rem' }} />
           </DemoCard>
         </Grid>
       </Container>
     </Box>
   );
-}
+};
+
+export default Index;

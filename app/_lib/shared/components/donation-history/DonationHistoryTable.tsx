@@ -1,6 +1,13 @@
 'use client';
 
-import * as React from 'react';
+import React, {
+  ChangeEvent,
+  FC,
+  MouseEvent,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 
 import {
   Box,
@@ -43,20 +50,27 @@ function getComparator<Key extends keyof any>(
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-export default function DonationHistoryTable() {
+export interface DonationHistoryTableProps {
+  tableRows?: TDonationTableRowData[];
+}
+
+export const DonationHistoryTable: FC<DonationHistoryTableProps> = ({
+  tableRows,
+}) => {
   const t = useTranslations('Shared');
 
-  const [order, setOrder] = React.useState<Order>('asc');
+  const [order, setOrder] = useState<Order>('asc');
   const [orderBy, setOrderBy] =
-    React.useState<keyof TDonationTableRowData>('donorName');
-  const [selected, setSelected] = React.useState<readonly string[]>([]);
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const rows = DonationsTableRows;
+    useState<keyof TDonationTableRowData>('donorName');
+  const [selected, setSelected] = useState<readonly string[]>([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rows, setRows] = useState<TDonationTableRowData[]>(
+    tableRows || DonationsTableRows
+  );
 
   const handleRequestSort = (
-    event: React.MouseEvent<unknown>,
+    event: MouseEvent<unknown>,
     property: keyof TDonationTableRowData
   ) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -64,7 +78,7 @@ export default function DonationHistoryTable() {
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSelectAllClick = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       const newSelected = rows.map((n) => n.donorName);
       setSelected(newSelected);
@@ -73,7 +87,7 @@ export default function DonationHistoryTable() {
     setSelected([]);
   };
 
-  const handleClick = (event: React.MouseEvent<unknown>, id: string) => {
+  const handleClick = (event: MouseEvent<unknown>, id: string) => {
     const selectedIndex = selected.indexOf(id);
     let newSelected: readonly string[] = [];
 
@@ -98,7 +112,7 @@ export default function DonationHistoryTable() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-  const visibleRows = React.useMemo(
+  const visibleRows = useMemo(
     () =>
       [...rows]
         .sort(getComparator(order, orderBy))
@@ -145,7 +159,7 @@ export default function DonationHistoryTable() {
                     role='checkbox'
                     aria-checked={isItemSelected}
                     tabIndex={-1}
-                    key={row.donorName}
+                    key={`${row.donorName}_${row.dateTime}`}
                     selected={isItemSelected}
                     sx={{
                       cursor: 'pointer',
@@ -201,4 +215,4 @@ export default function DonationHistoryTable() {
       </Paper>
     </Box>
   );
-}
+};

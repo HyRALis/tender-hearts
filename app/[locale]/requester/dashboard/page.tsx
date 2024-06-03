@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import DonationHistoryTable from '@/app/_lib/shared/components/donation-history/DonationHistoryTable';
+import { DonationHistoryTable } from '@/app/_lib/shared/components/donation-history/DonationHistoryTable';
 
 const Dashboard = () => {
   return (
