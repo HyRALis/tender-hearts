@@ -25,6 +25,7 @@ import { DonationHistoryTableHead } from './DonationHistoryTableHead';
 import { DonationHistoryTableToolbar } from './DonationHistoryTableToolbar';
 import { useTranslations } from 'next-intl';
 import { COLORS } from '../../utils/consts';
+import { useSearchParams } from 'next/navigation';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {
@@ -58,6 +59,7 @@ export const DonationHistoryTable: FC<DonationHistoryTableProps> = ({
   tableRows,
 }) => {
   const t = useTranslations('Shared');
+  const searchParams = useSearchParams();
 
   const [order, setOrder] = useState<Order>('asc');
   const [orderBy, setOrderBy] =
@@ -68,6 +70,14 @@ export const DonationHistoryTable: FC<DonationHistoryTableProps> = ({
   const [rows, setRows] = useState<TDonationTableRowData[]>(
     tableRows || DonationsTableRows
   );
+
+  useEffect(() => {
+    const searchParamPage = searchParams.get('donationTablePage');
+    const searchParamRowsPerPage = searchParams.get('donationTableRowsPerPage');
+
+    searchParamPage && setPage(Number(searchParamPage));
+    searchParamRowsPerPage && setRowsPerPage(Number(searchParamRowsPerPage));
+  }, []);
 
   const handleRequestSort = (
     event: MouseEvent<unknown>,

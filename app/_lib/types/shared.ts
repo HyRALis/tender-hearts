@@ -16,6 +16,10 @@ export enum RoleEnum {
   Donor = 'donor',
   Requester = 'requester',
 }
+export enum DonationTableSearchParamsEnum {
+  Page = 'donationTablePage',
+  RowsPerPage = 'donationTableRowsPerPage',
+}
 
 export type TListItemType =
   | TAdminListItem

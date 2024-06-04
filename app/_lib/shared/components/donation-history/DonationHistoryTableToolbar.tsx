@@ -1,7 +1,11 @@
+'use client';
+
 import { TablePagination, Toolbar, Typography } from '@mui/material';
 import React, { FC } from 'react';
 import { alpha } from '@mui/material/styles';
 import { useTranslations } from 'next-intl';
+import { DonationTableSearchParamsEnum } from '@/app/_lib/types/shared';
+import useSetSearchParam from '../../hooks/useSetSearchParam';
 
 export interface DonationHistoryTableToolbarProps {
   numSelected: number;
@@ -21,16 +25,26 @@ export const DonationHistoryTableToolbar: FC<
   paginationProps: { setPage, setRowsPerPage, ...paginationProps },
 }) => {
   const t = useTranslations('Shared');
+  const setSearchParams = useSetSearchParam();
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
+    setSearchParams(DonationTableSearchParamsEnum.Page, newPage.toString());
   };
 
   const handleChangeRowsPerPage = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
+    const newRowPerPage = Number(event.target.value);
+
     setPage(0);
+    setSearchParams(DonationTableSearchParamsEnum.Page, '0');
+
+    setRowsPerPage(newRowPerPage);
+    setSearchParams(
+      DonationTableSearchParamsEnum.RowsPerPage,
+      newRowPerPage.toString()
+    );
   };
 
   return (
