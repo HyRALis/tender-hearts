@@ -1,5 +1,3 @@
-import { error } from 'console';
-
 export const fetchDonations = async (id: string) => {
   try {
     const res = await fetch(
