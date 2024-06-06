@@ -1,18 +1,9 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Avatar, Box, Grid, Link, Paper, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import { ProviderLoginButtons } from './_components/ProviderLoginButtons';
+import { LoginForm } from './_components/LoginForm';
+
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 function Copyright(props: any) {
   return (
@@ -44,12 +35,12 @@ export default async function SignInSide() {
 
   return (
     <Grid container component='main' sx={{ height: '100vh' }}>
-      <CssBaseline />
       <Grid
         item
         xs={false}
         sm={4}
-        md={9}
+        md={7}
+        lg={9}
         sx={{
           backgroundImage:
             'url(https://images.pexels.com/photos/6646847/pexels-photo-6646847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
@@ -59,7 +50,16 @@ export default async function SignInSide() {
           backgroundPosition: 'center',
         }}
       />
-      <Grid item xs={12} sm={8} md={3} component={Paper} elevation={6} square>
+      <Grid
+        item
+        xs={12}
+        sm={8}
+        md={5}
+        lg={3}
+        component={Paper}
+        elevation={6}
+        square
+      >
         <Box
           sx={{
             my: 8,
@@ -75,53 +75,12 @@ export default async function SignInSide() {
           <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
-          <Box component='form' noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin='normal'
-              required
-              fullWidth
-              id='email'
-              label='Email Address'
-              name='email'
-              autoComplete='email'
-              autoFocus
-            />
-            <TextField
-              margin='normal'
-              required
-              fullWidth
-              name='password'
-              label='Password'
-              type='password'
-              id='password'
-              autoComplete='current-password'
-            />
-            <FormControlLabel
-              control={<Checkbox value='remember' color='primary' />}
-              label='Remember me'
-            />
-            <Button
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href='#' variant='body2'>
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href='#' variant='body2'>
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ mt: 5 }} />
-          </Box>
+          <LoginForm />
+          <Typography component='h1' variant='h5' marginY={'1.5rem'}>
+            - OR -
+          </Typography>
+          <ProviderLoginButtons />
+          <Copyright sx={{ mt: 5 }} />
         </Box>
       </Grid>
     </Grid>

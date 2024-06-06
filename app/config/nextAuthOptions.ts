@@ -1,5 +1,10 @@
 import { AuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+import TwitchProvider from 'next-auth/providers/twitch';
+import connectDb from './db';
+import User from '../_lib/models/User';
+import { RoleEnum } from '../_lib/types/shared';
+import { JWT } from 'next-auth/jwt';
 
 export const nextAuthOptions: AuthOptions = {
   providers: [
@@ -14,26 +19,51 @@ export const nextAuthOptions: AuthOptions = {
         },
       },
     }),
+    TwitchProvider({
+      clientId: process.env.TWITCH_CLIENT_ID,
+      clientSecret: process.env.TWITCH_CLIENT_SECRET,
+      authorization: {
+        params: {
+          scope: 'openid user:read:email',
+          prompt: 'consent',
+          response_type: 'code',
+        },
+      },
+    }),
   ],
   callbacks: {
     //Invokes on successful sign in
     async signIn({ profile }) {
-      //connect to the databse
+      await connectDb();
+      const user = await User.findOne({
+        'contactInformation.emailAddress': profile?.email,
+      }).exec();
 
-      //check if the user exists
+      if (!user) {
+        const username = profile?.name?.slice(0, 25);
+        const newUser = new User({
+          fullName: username,
+          contactInformation: {
+            emailAddress: profile?.email,
+          },
+          profileImage: profile?.image,
+          role: RoleEnum.Donor,
+        });
 
-      //if not add user to database
+        console.log({ newUser });
 
-      //return true to allow sign in
-      return false;
+        await newUser.save();
+      }
+
+      return true;
     },
-    // Modify the session option
-    async session({ session }) {
-      //get user from database
+    async session({ session, token }: { session: any; token: JWT }) {
+      const user: any = User.findOne({
+        contactInformation: { email: session.user?.email },
+      });
+      session.user.id = user._id;
+      session.accessToken = token.accessToken;
 
-      //assign user id to the session
-
-      //return session
       return session;
     },
   },

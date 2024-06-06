@@ -21,18 +21,18 @@ export interface IUser extends Document {
 
 // Mongoose schema for User
 const UserSchema: Schema = new Schema({
-  userId: { type: String, required: true, unique: true },
   fullName: { type: String, required: true },
-  dateOfBirth: { type: String, required: true },
-  gender: { type: String, required: true },
+  dateOfBirth: { type: String, required: false },
+  gender: { type: String, required: false },
+  profileImage: { type: String, required: false },
   contactInformation: {
-    phoneNumber: { type: String, required: true },
     emailAddress: { type: String, required: true },
+    phoneNumber: { type: String, required: false },
   },
   homeAddress: {
-    streetAddress: { type: String, required: true },
-    city: { type: String, required: true },
-    postalCode: { type: String, required: true },
+    streetAddress: { type: String, required: false },
+    city: { type: String, required: false },
+    postalCode: { type: String, required: false },
   },
   role: { type: String, required: true },
 });
