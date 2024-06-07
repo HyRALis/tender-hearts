@@ -7,6 +7,9 @@ import { RoleEnum } from '../_lib/types/shared';
 import { JWT } from 'next-auth/jwt';
 
 export const nextAuthOptions: AuthOptions = {
+  pages: {
+    signIn: '/en/login',
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
