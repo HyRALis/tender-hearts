@@ -5,7 +5,11 @@
     "admin": "Admin",
     "donor": "Donor",
     "requester": "Requester",
-    "reviewer": "Reviewer"
+    "reviewer": "Reviewer",
+    "error_invalid_email": "Email is not valid",
+    "error_required_email": "Email is required",
+    "error_required_password": "Password is required",
+    "error_wrong_credentials": "Login not successful, try loging in with a provider below"
   },
   "Shared": {
     "title": "Tender hearts",

@@ -5,7 +5,11 @@
     "admin": "Администратор",
     "donor": "Донатор",
     "requester": "Барател",
-    "reviewer": "Прегледувач"
+    "reviewer": "Прегледувач",
+    "error_invalid_email": "Невалиден е-mail",
+    "error_required_email": "Полето за е-mail е задолжително",
+    "error_required_password": "Полето за лозинка е задолжително",
+    "error_wrong_credentials": "Грешка при најава, обидете се со некој од провајдерите подолу"
   },
   "Shared": {
     "title": "Нежни срца",

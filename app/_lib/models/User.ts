@@ -20,22 +20,26 @@ export interface IUser extends Document {
 }
 
 // Mongoose schema for User
-const UserSchema: Schema = new Schema({
-  fullName: { type: String, required: true },
-  dateOfBirth: { type: String, required: false },
-  gender: { type: String, required: false },
-  profileImage: { type: String, required: false },
-  contactInformation: {
-    emailAddress: { type: String, required: true },
-    phoneNumber: { type: String, required: false },
+const UserSchema: Schema = new Schema(
+  {
+    fullName: { type: String, required: true },
+    password: { type: String, required: false },
+    dateOfBirth: { type: String, required: false },
+    gender: { type: String, required: false },
+    profileImage: { type: String, required: false },
+    contactInformation: {
+      emailAddress: { type: String, required: true },
+      phoneNumber: { type: String, required: false },
+    },
+    homeAddress: {
+      streetAddress: { type: String, required: false },
+      city: { type: String, required: false },
+      postalCode: { type: String, required: false },
+    },
+    role: { type: String, required: true },
   },
-  homeAddress: {
-    streetAddress: { type: String, required: false },
-    city: { type: String, required: false },
-    postalCode: { type: String, required: false },
-  },
-  role: { type: String, required: true },
-});
+  { timestamps: true }
+);
 
 // Exporting the User model
 export default mongoose.models.User ||

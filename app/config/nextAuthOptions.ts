@@ -1,10 +1,12 @@
 import { AuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import TwitchProvider from 'next-auth/providers/twitch';
+import CredentialsProvider from 'next-auth/providers/credentials';
 import connectDb from './db';
 import User from '../_lib/models/User';
 import { RoleEnum } from '../_lib/types/shared';
 import { JWT } from 'next-auth/jwt';
+import * as bcrypt from 'bcrypt';
 
 export const nextAuthOptions: AuthOptions = {
   pages: {
@@ -31,6 +33,48 @@ export const nextAuthOptions: AuthOptions = {
           prompt: 'consent',
           response_type: 'code',
         },
+      },
+    }),
+    CredentialsProvider({
+      // The name to display on the sign in form (e.g. "Sign in with...")
+      name: 'Sign in with',
+      credentials: {
+        email: {
+          label: 'Email',
+          type: 'text',
+          placeholder: 'example@email.com',
+        },
+        password: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials, req) {
+        if (!credentials || !credentials.email || !credentials.password)
+          return null;
+
+        // Add logic here to look up the user from the credentials supplied
+        await connectDb();
+
+        const user = await User.findOne({
+          'contactInformation.emailAddress': credentials?.email.toLowerCase(),
+        }).exec();
+
+        if (user && user.password) {
+          // Any object returned will be saved in `user` property of the JWT
+          const match = await bcrypt.compare(
+            credentials?.password,
+            user.password
+          );
+
+          if (match) {
+            return user;
+          } else {
+            return null;
+          }
+        } else {
+          // If you return null then an error will be displayed advising the user to check their details.
+          return null;
+
+          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+        }
       },
     }),
   ],
