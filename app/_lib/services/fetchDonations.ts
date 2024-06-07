@@ -1,8 +1,5 @@
-import { error } from 'console';
-
 export const fetchDonations = async () => {
   try {
-    console.log({ api: process.env.NEXT_PUBLIC_DOMAIN_API });
     const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_API}/donations`);
 
     if (!res) {

@@ -32,7 +32,6 @@ export const nextAuthOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    //Invokes on successful sign in
     async signIn({ profile }) {
       await connectDb();
       const user = await User.findOne({
@@ -49,8 +48,6 @@ export const nextAuthOptions: AuthOptions = {
           profileImage: profile?.image,
           role: RoleEnum.Donor,
         });
-
-        console.log({ newUser });
 
         await newUser.save();
       }

@@ -33,7 +33,6 @@ export const ProviderLoginButtons: FC = () => {
 
   const memoizedButtonsRender = useMemo(() => {
     if (providers) {
-      console.log({ providers });
       return (
         <Box
           sx={{
