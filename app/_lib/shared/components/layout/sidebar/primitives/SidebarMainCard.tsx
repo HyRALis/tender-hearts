@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Paper, Typography } from '@mui/material';
 import React, { FC } from 'react';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
@@ -7,17 +9,16 @@ import {
 } from '../../../ui/primitives/VerticalInfoGroup';
 import { COLORS } from '@/app/_lib/shared/utils/consts';
 import { FlexBox } from '../../../ui/primitives/FlexBox';
+import { useSession } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 
 export interface SidebarMainCardProps {
-  title: string;
-  subtitle: string;
   stats: VerticalInfoGroupProps[];
 }
-export const SidebarMainCard: FC<SidebarMainCardProps> = ({
-  title,
-  subtitle,
-  stats,
-}) => {
+export const SidebarMainCard: FC<SidebarMainCardProps> = ({ stats }) => {
+  const t = useTranslations('Shared');
+  const { data: sessionData } = useSession();
+
   return (
     <Paper
       elevation={4}
@@ -34,7 +35,7 @@ export const SidebarMainCard: FC<SidebarMainCardProps> = ({
         fontWeight={'bold'}
         paddingBottom={'0.8rem'}
       >
-        {title}
+        {sessionData?.user.name}
       </Typography>
       <Box
         display={'flex'}
@@ -48,7 +49,7 @@ export const SidebarMainCard: FC<SidebarMainCardProps> = ({
           paddingRight={'0.5rem'}
           color={COLORS.NATURAL}
         >
-          {subtitle}
+          {t(sessionData?.user.role)}
         </Typography>
         <CheckCircleRoundedIcon fontSize='small' />
       </Box>

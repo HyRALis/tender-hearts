@@ -16,24 +16,23 @@ import { useTranslations } from 'next-intl';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export const SidebarUser = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
   const t = useTranslations('Shared');
   const { data: sessionData } = useSession();
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleSignOut = () => {
-    signOut();
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleSignOut = () => {
+    signOut();
+    handleClose();
   };
 
   return (
@@ -55,14 +54,16 @@ export const SidebarUser = () => {
           <Typography component={'p'} textAlign={'end'} fontSize={'0.8rem'}>
             {sessionData?.user?.name || sessionData?.user?.email}
           </Typography>
-          <Typography
-            component={'p'}
-            textAlign={'end'}
-            fontSize={'0.65rem'}
-            color={COLORS.NATURAL_TWO}
-          >
-            {'admin'}
-          </Typography>
+          {sessionData?.user?.role && (
+            <Typography
+              component={'p'}
+              textAlign={'end'}
+              fontSize={'0.65rem'}
+              color={COLORS.NATURAL_TWO}
+            >
+              {t(sessionData.user.role)}
+            </Typography>
+          )}
         </FlexBox>
         <SidebarAvatar
           imageSrc={

@@ -102,10 +102,12 @@ export const nextAuthOptions: AuthOptions = {
       return true;
     },
     async session({ session, token }: { session: any; token: JWT }) {
-      const user: any = User.findOne({
-        contactInformation: { email: session.user?.email },
+      const user: any = await User.findOne({
+        'contactInformation.emailAddress': session.user?.email,
       });
+
       session.user.id = user._id;
+      session.user.role = user.role;
       session.accessToken = token.accessToken;
 
       return session;
