@@ -25,11 +25,7 @@ export const Sidebar: FC<SidebarProps> = ({ stats, mainInfoItems }) => {
       <SidebarHeader username='Petar Trajanoski' role='requester' />
       <Divider sx={{ borderColor: COLORS.PRIMARY_LIGHT, marginX: '0.5rem' }} />
       <FlexBox flexDirection={'column'} padding={'1.5rem 1rem'} gap={'1.5rem'}>
-        <SidebarMainCard
-          title='Petar Trajanoski'
-          subtitle={t('requester')}
-          stats={stats}
-        />
+        <SidebarMainCard stats={stats} />
         <Typography variant='h6' component={'h4'} color={COLORS.NATURAL}>
           {t('general_overview')}
         </Typography>
