@@ -7,6 +7,7 @@ import { IconButton, Typography } from '@mui/material';
 import LanguageSwitcherMenuVariant from '../../../ui/language-switcher/LanguageSwitcherMenuVariant';
 import { SidebarAvatar } from './SidebarAvatar';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { SidebarUser } from './SidebarUser';
 
 export interface SidebarHeaderProps {
   username: string;
@@ -33,26 +34,7 @@ export const SidebarHeader: FC<SidebarHeaderProps> = ({ username, role }) => {
         </IconButton>
         <LanguageSwitcherMenuVariant />
       </FlexBox>
-      <FlexBox alignItems={'center'} justifyContent={'flex-end'}>
-        <FlexBox
-          alignItems={'flex-end'}
-          flexDirection={'column'}
-          marginRight={'1rem'}
-        >
-          <Typography component={'p'} textAlign={'end'} fontSize={'0.8rem'}>
-            {username}
-          </Typography>
-          <Typography
-            component={'p'}
-            textAlign={'end'}
-            fontSize={'0.65rem'}
-            color={COLORS.NATURAL_TWO}
-          >
-            {role}
-          </Typography>
-        </FlexBox>
-        <SidebarAvatar username={username} />
-      </FlexBox>
+      <SidebarUser />
     </DrawerHeader>
   );
 };
