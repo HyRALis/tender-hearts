@@ -4,6 +4,7 @@ import React, { FC } from 'react';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { FlexBox } from '../../../ui/primitives/FlexBox';
 import { COLORS } from '@/app/_lib/shared/utils/consts';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export interface SidebarAvatarProps {
   username: string;
@@ -33,17 +34,18 @@ export const SidebarAvatar: FC<SidebarAvatarProps> = ({
         textAlign={'center'}
         justifyContent={'center'}
         alignItems={'center'}
+        color={COLORS.ACCENT}
       >
-        <Image
-          width={50}
-          height={50}
-          src={
-            imageSrc
-              ? imageSrc
-              : 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-          }
-          alt={`${username} avatar`}
-        />
+        {imageSrc ? (
+          <Image
+            width={50}
+            height={50}
+            src={imageSrc}
+            alt={`${username} avatar`}
+          />
+        ) : (
+          <AccountCircleIcon />
+        )}
       </FlexBox>
       <Box
         position={'absolute'}
