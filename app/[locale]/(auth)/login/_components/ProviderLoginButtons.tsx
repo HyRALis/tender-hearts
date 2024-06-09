@@ -12,10 +12,10 @@ import {
   useSession,
 } from 'next-auth/react';
 import { BuiltInProviderType } from 'next-auth/providers/index';
+import { useTranslations } from 'next-intl';
 
 export const ProviderLoginButtons: FC = () => {
-  const { data: session } = useSession();
-
+  const t = useTranslations('Index');
   const [providers, setProviders] = useState<Record<
     LiteralUnion<BuiltInProviderType, string>,
     ClientSafeProvider
@@ -39,7 +39,7 @@ export const ProviderLoginButtons: FC = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '60%',
+            width: '100%',
           }}
           gap={'0.8rem'}
         >
@@ -48,14 +48,14 @@ export const ProviderLoginButtons: FC = () => {
               aria-label='Sign in with Google'
               variant='outlined'
               fullWidth
-              onClick={() => signIn(providers.google.id)}
+              onClick={() => signIn(providers.google.id, {})}
             >
               <GoogleIcon
                 sx={{
                   marginRight: '1rem',
                 }}
               />
-              Sing with Google
+              {t('sign_in_with_google')}
             </Button>
           )}
           {providers.facebook && (
@@ -70,7 +70,7 @@ export const ProviderLoginButtons: FC = () => {
                   marginRight: '1rem',
                 }}
               />
-              Sing with Facebook
+              {t('sign_in_with_facebook')}
             </Button>
           )}
           {providers.twitch && (
@@ -80,7 +80,7 @@ export const ProviderLoginButtons: FC = () => {
               fullWidth
               onClick={() => signIn(providers.twitch.id)}
             >
-              Sing with Twitch
+              {t('sign_in_with_twitch')}
             </Button>
           )}
         </Box>

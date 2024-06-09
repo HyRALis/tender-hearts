@@ -46,7 +46,7 @@ export const nextAuthOptions: AuthOptions = {
         },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         if (!credentials || !credentials.email || !credentials.password)
           return null;
 
@@ -58,7 +58,6 @@ export const nextAuthOptions: AuthOptions = {
         }).exec();
 
         if (user && user.password) {
-          // Any object returned will be saved in `user` property of the JWT
           const match = await bcrypt.compare(
             credentials?.password,
             user.password
@@ -69,23 +68,22 @@ export const nextAuthOptions: AuthOptions = {
           } else {
             return null;
           }
-        } else {
-          // If you return null then an error will be displayed advising the user to check their details.
-          return null;
-
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
         }
+
+        return null;
       },
     }),
   ],
   callbacks: {
-    async signIn({ profile }) {
+    async signIn({ profile, credentials, user }) {
       await connectDb();
-      const user = await User.findOne({
-        'contactInformation.emailAddress': profile?.email,
+      const existingUser = await User.findOne({
+        'contactInformation.emailAddress': profile
+          ? profile?.email
+          : user.contactInformation?.emailAddress,
       }).exec();
 
-      if (!user) {
+      if (!existingUser) {
         const username = profile?.name?.slice(0, 25);
         const newUser = new User({
           fullName: username,
@@ -102,12 +100,20 @@ export const nextAuthOptions: AuthOptions = {
       return true;
     },
     async session({ session, token }: { session: any; token: JWT }) {
-      const user: any = await User.findOne({
-        'contactInformation.emailAddress': session.user?.email,
-      });
+      let existingUser = null;
 
-      session.user.id = user._id;
-      session.user.role = user.role;
+      if (session.user && session.user.email) {
+        existingUser = await User.findOne({
+          'contactInformation.emailAddress': session.user.email,
+        });
+      } else {
+        existingUser = await User.findById({
+          _id: token.sub,
+        });
+      }
+
+      session.user.id = existingUser._id;
+      session.user.role = existingUser.role;
       session.accessToken = token.accessToken;
 
       return session;

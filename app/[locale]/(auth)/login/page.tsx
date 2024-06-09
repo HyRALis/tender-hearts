@@ -1,9 +1,19 @@
-import { Avatar, Box, Grid, Link, Paper, Typography } from '@mui/material';
+import {
+  Avatar,
+  Box,
+  Grid,
+  Link,
+  Paper,
+  ToggleButtonGroup,
+  Typography,
+} from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { ProviderLoginButtons } from './_components/ProviderLoginButtons';
 import { LoginForm } from './_components/LoginForm';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { SignIn } from './_components/SignIn';
+import { useTranslations } from 'next-intl';
 
 function Copyright(props: any) {
   return (
@@ -23,15 +33,8 @@ function Copyright(props: any) {
   );
 }
 
-export default async function SignInSide() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+export default function SignInSide() {
+  const t = useTranslations('Index');
 
   return (
     <Grid container component='main' sx={{ height: '100vh' }}>
@@ -73,13 +76,9 @@ export default async function SignInSide() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
-            Sign in
+            {t('login')}
           </Typography>
-          <LoginForm />
-          <Typography component='h1' variant='h5' marginY={'1.5rem'}>
-            - OR -
-          </Typography>
-          <ProviderLoginButtons />
+          <SignIn />
           <Copyright sx={{ mt: 5 }} />
         </Box>
       </Grid>

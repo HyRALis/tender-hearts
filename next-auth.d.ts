@@ -17,4 +17,10 @@ declare module 'next-auth' {
       role: TRole;
     } & DefaultSession['user'];
   }
+
+  interface User {
+    contactInformation: {
+      emailAddress: string;
+    };
+  }
 }
