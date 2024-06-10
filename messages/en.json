@@ -25,7 +25,13 @@
     "or": "Or",
     "remember_me": "Remember me",
     "sign_in_with_google": "Sign in with Google",
-    "sign_in_with_twitch": "Sign in with Twitch"
+    "sign_in_with_twitch": "Sign in with Twitch",
+    "sign_in_with_facebook": "Sign in with Facebook",
+    "error_first_name_is_required": "First name is required",
+    "error_last_name_is_required": "First name is required",
+    "error_confirm_password_is_required": "Confirm password is required",
+    "error_password_minimum_8_chars": "Password must be at least 8 characters",
+    "error_passwords_must_match": "Passwords must match"
   },
   "Shared": {
     "title": "Tender hearts",

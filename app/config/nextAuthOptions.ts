@@ -6,7 +6,8 @@ import connectDb from './db';
 import User from '../_lib/models/User';
 import { RoleEnum } from '../_lib/types/shared';
 import { JWT } from 'next-auth/jwt';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
+import { findUserByEmail, findUserById } from '../api/_utils/findUser';
 
 export const nextAuthOptions: AuthOptions = {
   pages: {
@@ -53,9 +54,7 @@ export const nextAuthOptions: AuthOptions = {
         // Add logic here to look up the user from the credentials supplied
         await connectDb();
 
-        const user = await User.findOne({
-          'contactInformation.emailAddress': credentials?.email.toLowerCase(),
-        }).exec();
+        const user = await findUserByEmail(credentials?.email.toLowerCase());
 
         if (user && user.password) {
           const match = await bcrypt.compare(
@@ -75,15 +74,20 @@ export const nextAuthOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ profile, credentials, user }) {
+    async signIn({ profile, user, account }) {
       await connectDb();
-      const existingUser = await User.findOne({
-        'contactInformation.emailAddress': profile
-          ? profile?.email
-          : user.contactInformation?.emailAddress,
-      }).exec();
 
-      if (!existingUser) {
+      let existingUser;
+
+      if (profile && profile.email) {
+        existingUser = await findUserByEmail(profile.email);
+      } else {
+        existingUser = await findUserByEmail(
+          user.contactInformation.emailAddress
+        );
+      }
+
+      if (!existingUser && account?.provider !== 'credentials') {
         const username = profile?.name?.slice(0, 25);
         const newUser = new User({
           fullName: username,
@@ -103,13 +107,9 @@ export const nextAuthOptions: AuthOptions = {
       let existingUser = null;
 
       if (session.user && session.user.email) {
-        existingUser = await User.findOne({
-          'contactInformation.emailAddress': session.user.email,
-        });
+        existingUser = await findUserByEmail(session.user.email);
       } else {
-        existingUser = await User.findById({
-          _id: token.sub,
-        });
+        existingUser = await findUserById(token.sub as string);
       }
 
       session.user.id = existingUser._id;

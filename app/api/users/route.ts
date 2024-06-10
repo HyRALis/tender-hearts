@@ -1,8 +1,9 @@
 import User from '@/app/_lib/models/User';
 import { defaultRegisterFormSchemaShape } from '@/app/_lib/yup-schemas/register';
 import connectDb from '@/app/config/db';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import * as yup from 'yup';
+import { findUserByEmail } from '../_utils/findUser';
 
 export const POST = async (request: Request) => {
   if (request.method !== 'POST') {
@@ -35,9 +36,7 @@ export const POST = async (request: Request) => {
     const { email, firstName, lastName, password, role } = body;
 
     await connectDb();
-    const user = await User.findOne({
-      'contactInformation.emailAddress': email,
-    }).exec();
+    const user = await findUserByEmail(email);
 
     if (user) {
       return new Response(JSON.stringify({ message: 'user_already_exists' }), {

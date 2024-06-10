@@ -25,7 +25,13 @@
     "or": "или",
     "remember_me": "Запомни ме",
     "sign_in_with_google": "Најави се со Google",
-    "sign_in_with_twitch": "Најави се со Twitch"
+    "sign_in_with_twitch": "Најави се со Twitch",
+    "sign_in_with_facebook": "Најави се со Facebook",
+    "error_first_name_is_required": "Полето за име е задолжително",
+    "error_last_name_is_required": "Полето за презиме е задолжително",
+    "error_confirm_password_is_required": "Полето за потврда на лозинка е задолжително",
+    "error_password_minimum_8_chars": "Лозинката мора да има минимум 8 карактери",
+    "error_passwords_must_match": "Лозинките мора да се совпаѓаат"
   },
   "Shared": {
     "title": "Нежни срца",

@@ -8,15 +8,14 @@ import {
   Grid,
   TextField,
   Link as MuiLink,
+  Alert,
   Typography,
 } from '@mui/material';
-import { signIn } from 'next-auth/react';
-import React, { useMemo } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import React, { FC, useMemo } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocale, useTranslations } from 'next-intl';
-import WarningIcon from '@mui/icons-material/Warning';
-import { red } from '@mui/material/colors';
 import { useSearchParams } from 'next/navigation';
 import { loginSchema } from '@/app/_lib/yup-schemas/login';
 import Link from 'next/link';
@@ -31,7 +30,7 @@ enum WatchedValuesEnum {
   password,
 }
 
-export const LoginForm = () => {
+export const LoginForm: FC = () => {
   const t = useTranslations('Index');
   const locale = useLocale();
   const searchParams = useSearchParams();
@@ -76,24 +75,6 @@ export const LoginForm = () => {
       sx={{ mt: 1 }}
       onSubmit={handleSubmit(onSubmit)}
     >
-      {hasCredentialsError && (
-        <Box
-          display={'flex'}
-          alignItems={'center'}
-          color={red[700]}
-          gap={'1.5rem'}
-          bgcolor={red[100]}
-          border={`1px solid ${red[500]}`}
-          borderRadius={'4px'}
-          padding={'1.2rem 1rem'}
-        >
-          <WarningIcon fontSize='large' />
-          <Typography variant='body2' component={'p'}>
-            {t('error_wrong_credentials')}
-          </Typography>
-        </Box>
-      )}
-
       <TextField
         {...register('email')}
         margin='normal'
@@ -120,6 +101,9 @@ export const LoginForm = () => {
         helperText={!!errors.password && t(errors.password?.message)}
         autoComplete='current-password'
       />
+      {hasCredentialsError && (
+        <Alert severity='error'>{t('error_wrong_credentials')}</Alert>
+      )}
       <FormControlLabel
         control={<Checkbox value='remember' color='primary' />}
         label={t('remember_me')}
@@ -130,12 +114,16 @@ export const LoginForm = () => {
       <Grid container>
         <Grid item xs>
           <Link href={`/${locale}/forgot-password`}>
-            <MuiLink variant='body2'>{t('forgot_your_password')}</MuiLink>
+            <MuiLink component={'p'} variant='body2'>
+              {t('forgot_your_password')}
+            </MuiLink>
           </Link>
         </Grid>
         <Grid item>
           <Link href={`/${locale}/register`}>
-            <MuiLink variant='body2'>{t('dont_have_account_sign_up')}</MuiLink>
+            <MuiLink component={'p'} variant='body2'>
+              {t('dont_have_account_sign_up')}
+            </MuiLink>
           </Link>
         </Grid>
       </Grid>
