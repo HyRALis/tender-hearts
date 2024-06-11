@@ -34,6 +34,7 @@ export const SidebarMainCard: FC<SidebarMainCardProps> = ({ stats }) => {
         fontSize={'1.5rem'}
         fontWeight={'bold'}
         paddingBottom={'0.8rem'}
+        textTransform={'capitalize'}
       >
         {sessionData?.user.name}
       </Typography>

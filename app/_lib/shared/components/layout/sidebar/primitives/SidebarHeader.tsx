@@ -9,11 +9,7 @@ import { SidebarAvatar } from './SidebarAvatar';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { SidebarUser } from './SidebarUser';
 
-export interface SidebarHeaderProps {
-  username: string;
-  role: TRole;
-}
-export const SidebarHeader: FC<SidebarHeaderProps> = ({ username, role }) => {
+export const SidebarHeader: FC = () => {
   return (
     <DrawerHeader
       sx={{
