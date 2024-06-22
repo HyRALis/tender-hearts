@@ -34,7 +34,12 @@ export const ImportantCard: FC<ImportantCardProps> = ({
       }}
       elevation={6}
     >
-      <FlexBox flexDirection={'column'} gap={'0.8rem'}>
+      <FlexBox
+        flexDirection={'column'}
+        justifyContent={'space-around'}
+        gap={'0.8rem'}
+        height={'100%'}
+      >
         <FlexBox>
           <FlexBox
             justifyContent={'center'}
@@ -51,24 +56,27 @@ export const ImportantCard: FC<ImportantCardProps> = ({
             {variant === 'primary' ? <DonutLargeIcon /> : <BarChartIcon />}
           </FlexBox>
         </FlexBox>
-        <Typography
-          component={'p'}
-          fontSize={'1.5rem'}
-          fontWeight={'bold'}
-          textTransform={'capitalize'}
-          color={'white'}
-        >
-          {value}
-        </Typography>
-        <Typography
-          component={'p'}
-          fontSize={'1rem'}
-          fontWeight={'bold'}
-          textTransform={'capitalize'}
-          color={variant === 'secondary' ? grey[800] : grey[400]}
-        >
-          {title}
-        </Typography>
+        <FlexBox flexDirection={'column'}>
+          <Typography
+            component={'p'}
+            fontSize={'1.8rem'}
+            fontWeight={'bold'}
+            textTransform={'capitalize'}
+            fontStyle={'italic'}
+            color={'white'}
+          >
+            {value}
+          </Typography>
+          <Typography
+            component={'p'}
+            fontSize={'1rem'}
+            fontWeight={'bold'}
+            textTransform={'capitalize'}
+            color={variant === 'secondary' ? grey[800] : grey[400]}
+          >
+            {title}
+          </Typography>
+        </FlexBox>
       </FlexBox>
     </Paper>
   );
