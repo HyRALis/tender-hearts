@@ -4,8 +4,7 @@ import { DisplayAvatars } from '@/app/_lib/shared/components/layout/dashboard/pr
 import { ImportantCard } from '@/app/_lib/shared/components/layout/dashboard/primitives/ImportantCard';
 import { StatsList } from '@/app/_lib/shared/components/layout/dashboard/primitives/StatsList';
 import { FlexBox } from '@/app/_lib/shared/components/ui/primitives/FlexBox';
-import { DisplayAvatarsMock } from '@/app/_lib/shared/mocks/DispayAvatarsMock';
-import { Typography } from '@mui/material';
+import { DISPLAY_AVATARS_MOCK } from '@/app/_lib/shared/mocks/DispayAvatarsMock';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
@@ -31,7 +30,7 @@ const Dashboard = () => {
                 title={t('weekly_donations')}
               />
             </FlexBox>
-            <DisplayAvatars {...DisplayAvatarsMock} />
+            <DisplayAvatars {...DISPLAY_AVATARS_MOCK} />
           </FlexBox>
           <StatsList />
         </FlexBox>

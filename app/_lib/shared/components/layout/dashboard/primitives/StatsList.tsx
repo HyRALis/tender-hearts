@@ -59,7 +59,7 @@ const Stat: FC<StatProps> = ({ title, value, trending }) => {
       }}
       gap={'1rem'}
     >
-      <FlexBox flexDirection={'column'}>
+      <FlexBox flexDirection={'column'} gap={'0.8rem'}>
         <Typography variant={'body2'} component={'p'} color={grey[600]}>
           {title}
         </Typography>

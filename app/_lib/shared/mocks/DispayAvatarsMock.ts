@@ -1,6 +1,6 @@
 import { DisplayAvatarsProps } from '../components/layout/dashboard/primitives/DisplayAvatars';
 
-export const DisplayAvatarsMock: DisplayAvatarsProps = {
+export const DISPLAY_AVATARS_MOCK: DisplayAvatarsProps = {
   title: 'Top donors',
   hyperlink: {
     label: 'View',

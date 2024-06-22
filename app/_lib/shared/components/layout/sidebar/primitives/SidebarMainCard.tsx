@@ -18,7 +18,6 @@ export interface SidebarMainCardProps {
 export const SidebarMainCard: FC<SidebarMainCardProps> = ({ stats }) => {
   const t = useTranslations('Shared');
   const { data: sessionData } = useSession();
-
   return (
     <Paper
       elevation={4}
@@ -29,30 +28,34 @@ export const SidebarMainCard: FC<SidebarMainCardProps> = ({ stats }) => {
         borderRadius: '0.8rem',
       }}
     >
-      <Typography
-        component={'p'}
-        fontSize={'1.5rem'}
-        fontWeight={'bold'}
-        paddingBottom={'0.8rem'}
-      >
-        {sessionData?.user.name}
-      </Typography>
-      <Box
-        display={'flex'}
-        alignItems={'center'}
-        marginBottom={'1.5rem'}
-        color={COLORS.ACCENT}
-      >
+      {sessionData?.user.name && (
         <Typography
           component={'p'}
-          fontSize={'1rem'}
-          paddingRight={'0.5rem'}
-          color={COLORS.NATURAL}
+          fontSize={'1.5rem'}
+          fontWeight={'bold'}
+          paddingBottom={'0.8rem'}
         >
-          {t(sessionData?.user.role)}
+          {sessionData.user.name}
         </Typography>
-        <CheckCircleRoundedIcon fontSize='small' />
-      </Box>
+      )}
+      {sessionData?.user.name && (
+        <Box
+          display={'flex'}
+          alignItems={'center'}
+          marginBottom={'1.5rem'}
+          color={COLORS.ACCENT}
+        >
+          <Typography
+            component={'p'}
+            fontSize={'1rem'}
+            paddingRight={'0.5rem'}
+            color={COLORS.NATURAL}
+          >
+            {t(sessionData.user.role)}
+          </Typography>
+          <CheckCircleRoundedIcon fontSize='small' />
+        </Box>
+      )}
       <Paper
         elevation={0}
         sx={{

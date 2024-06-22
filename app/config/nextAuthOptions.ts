@@ -114,6 +114,7 @@ export const nextAuthOptions: AuthOptions = {
 
       session.user.id = existingUser._id;
       session.user.role = existingUser.role;
+      session.user.name = existingUser.fullName;
       session.accessToken = token.accessToken;
 
       return session;
