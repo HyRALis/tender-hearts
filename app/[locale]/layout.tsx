@@ -1,5 +1,4 @@
 import { CssBaseline } from '@mui/material';
-import { grey } from '@mui/material/colors';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -14,16 +13,12 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
   return (
     <AuthProvider>
       <html lang={locale}>
-        <body
-          style={{ width: '100vw', height: '100vh', background: grey[900] }}
-        >
+        <body style={{ width: '100vw', height: '100vh', background: 'white' }}>
           <SpeedInsights />
           <NextIntlClientProvider messages={messages}>
             <CssBaseline />

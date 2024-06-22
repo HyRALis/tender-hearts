@@ -80,7 +80,13 @@
   },
   "Admin": {
     "title": "Tender hearts",
-    "admin": "Admin"
+    "admin": "Admin",
+    "total_requesters": "Total requesters",
+    "total_requests": "Total requests",
+    "total_donors": "Total donors",
+    "total_donations": "Total donations",
+    "monthly_donations": "Montly donations",
+    "weekly_donations": "Weekly donations"
   },
   "Donor": {
     "title": "Tender hearts",

@@ -81,7 +81,13 @@
   },
   "Admin": {
     "title": "Нежни срца",
-    "admin": "Администратор"
+    "admin": "Администратор",
+    "total_requesters": "Вкупно баратели",
+    "total_requests": "Вкупно барања",
+    "total_donors": "Вкупно донатори",
+    "total_donations": "Вкупни донации",
+    "monthly_donations": "Месечни донации",
+    "weekly_donations": "Неделни донации"
   },
   "Donor": {
     "title": "Нежни срца",

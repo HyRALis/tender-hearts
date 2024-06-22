@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.4.2",
     "@mui/icons-material": "^5.15.18",
     "@mui/material": "^5.15.18",
+    "@mui/x-charts": "^7.7.1",
     "@vercel/speed-insights": "^1.0.11",
     "bcryptjs": "^2.4.3",
     "mongodb": "^6.7.0",

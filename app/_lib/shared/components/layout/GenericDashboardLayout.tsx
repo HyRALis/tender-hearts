@@ -5,6 +5,7 @@ import { useGenerateSidebarItems } from '../../hooks/useGenerateSidebarItems';
 import { FlexBox } from '../ui/primitives/FlexBox';
 import { Topbar } from './topbar/Topbar';
 import { Sidebar } from './sidebar/Sidebar';
+import { COLORS } from '../../utils/consts';
 
 export default function GenericDashboardLayout({
   children,
@@ -21,7 +22,7 @@ export default function GenericDashboardLayout({
   return (
     <FlexBox
       sx={{
-        background: 'white',
+        background: `${COLORS.ACCENT}05`,
         height: '100vh',
         paddingTop: '68px',
       }}

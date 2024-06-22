@@ -11,9 +11,11 @@ export const COLORS = {
 };
 
 export const DRAWER_WIDTH = 320;
+export const BORDER_RADIUS = '0.8rem';
+export const PADDING = '1.2rem';
 
 //Tabs per portal
-export const donorTabs: TListItemType[] = [
+export const DONOR_TABS: TListItemType[] = [
   'Dashboard',
   'Browse Requests',
   'Donation History',
@@ -21,7 +23,7 @@ export const donorTabs: TListItemType[] = [
   'Home',
 ];
 
-export const adminTabs: TListItemType[] = [
+export const ADMIN_TABS: TListItemType[] = [
   'Dashboard',
   'Manage Users',
   'Manage Requests',
@@ -29,7 +31,7 @@ export const adminTabs: TListItemType[] = [
   'Home',
 ];
 
-export const requesterTabs: TListItemType[] = [
+export const REQUESTER_TABS: TListItemType[] = [
   'Dashboard',
   'Submit Request',
   'Track Requests',
