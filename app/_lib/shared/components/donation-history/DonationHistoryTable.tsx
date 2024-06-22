@@ -24,7 +24,7 @@ import { DonationsTableRows } from '../../mocks/DonationsTableRows';
 import { DonationHistoryTableHead } from './DonationHistoryTableHead';
 import { DonationHistoryTableToolbar } from './DonationHistoryTableToolbar';
 import { useTranslations } from 'next-intl';
-import { COLORS } from '../../utils/consts';
+import { BORDER_RADIUS, COLORS } from '../../utils/consts';
 import { useSearchParams } from 'next/navigation';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -143,7 +143,14 @@ export const DonationHistoryTable: FC<DonationHistoryTableProps> = ({
             setRowsPerPage,
           }}
         />
-        <TableContainer>
+        <TableContainer
+          sx={{
+            '&:last-child': {
+              borderBottomLeftRadius: BORDER_RADIUS,
+              borderBottomRightRadius: BORDER_RADIUS,
+            },
+          }}
+        >
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby='tableTitle'
