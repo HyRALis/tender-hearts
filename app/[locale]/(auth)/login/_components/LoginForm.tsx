@@ -9,7 +9,6 @@ import {
   TextField,
   Link as MuiLink,
   Alert,
-  Typography,
 } from '@mui/material';
 import { signIn, useSession } from 'next-auth/react';
 import React, { FC, useMemo } from 'react';
@@ -51,6 +50,8 @@ export const LoginForm: FC = () => {
       await signIn('credentials', {
         email,
         password,
+        redirect: true,
+        callbackUrl: `/${locale}/redirect`,
       });
     } catch (error) {
       throw new Error(`Error happened when signing in : ${error}`);

@@ -2,6 +2,8 @@ import { TAdminListItem } from './admin';
 import { TDonorListItem } from './donor';
 import { TRequesterListItem } from './requester';
 
+export type TLocales = 'en' | 'mk';
+
 export type TPortalType =
   | 'donor'
   | 'admin'

@@ -51,7 +51,6 @@ export const nextAuthOptions: AuthOptions = {
         if (!credentials || !credentials.email || !credentials.password)
           return null;
 
-        // Add logic here to look up the user from the credentials supplied
         await connectDb();
 
         const user = await findUserByEmail(credentials?.email.toLowerCase());

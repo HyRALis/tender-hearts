@@ -1,4 +1,7 @@
-import { TListItemType } from '../../types/shared';
+import { TListItemType, TLocales } from '../../types/shared';
+
+export const LOCALES: TLocales[] = ['en', 'mk'];
+export const PROTECTED_ROUTES = ['admin', 'donor', 'requester', 'reviewer'];
 
 export const COLORS = {
   PRIMARY: '#003366',

@@ -19,8 +19,6 @@ export const SidebarUser = () => {
   const t = useTranslations('Shared');
   const { data: sessionData } = useSession();
 
-  console.log({ sessionData });
-
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 

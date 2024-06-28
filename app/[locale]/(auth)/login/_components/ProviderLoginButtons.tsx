@@ -12,10 +12,11 @@ import {
   useSession,
 } from 'next-auth/react';
 import { BuiltInProviderType } from 'next-auth/providers/index';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export const ProviderLoginButtons: FC = () => {
   const t = useTranslations('Index');
+  const locale = useLocale();
   const [providers, setProviders] = useState<Record<
     LiteralUnion<BuiltInProviderType, string>,
     ClientSafeProvider
@@ -48,7 +49,12 @@ export const ProviderLoginButtons: FC = () => {
               aria-label='Sign in with Google'
               variant='outlined'
               fullWidth
-              onClick={() => signIn(providers.google.id, {})}
+              onClick={() =>
+                signIn(providers.google.id, {
+                  callbackUrl: `/${locale}/redirect`,
+                  redirect: true,
+                })
+              }
             >
               <GoogleIcon
                 sx={{
@@ -63,7 +69,12 @@ export const ProviderLoginButtons: FC = () => {
               aria-label='Sign in with Facebook'
               variant='outlined'
               fullWidth
-              onClick={() => signIn(providers.facebook.id)}
+              onClick={() =>
+                signIn(providers.facebook.id, {
+                  callbackUrl: `/${locale}/redirect`,
+                  redirect: true,
+                })
+              }
             >
               <FacebookIcon
                 sx={{
@@ -78,7 +89,12 @@ export const ProviderLoginButtons: FC = () => {
               aria-label='Sign in with Twitch'
               variant='outlined'
               fullWidth
-              onClick={() => signIn(providers.twitch.id)}
+              onClick={() =>
+                signIn(providers.twitch.id, {
+                  callbackUrl: `/${locale}/redirect`,
+                  redirect: true,
+                })
+              }
             >
               {t('sign_in_with_twitch')}
             </Button>

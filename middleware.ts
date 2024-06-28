@@ -1,12 +1,10 @@
 import { withAuth } from 'next-auth/middleware';
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest } from 'next/server';
-
-export const locales = ['en', 'mk'] as const;
-export const protectedRoutes = ['admin', 'donor', 'requester', 'reviewer'];
+import { LOCALES, PROTECTED_ROUTES } from './app/_lib/shared/utils/consts';
 
 const intlMiddleware = createMiddleware({
-  locales,
+  locales: LOCALES,
   defaultLocale: 'en',
   localeDetection: false,
 });
@@ -27,7 +25,7 @@ const authMiddleware = withAuth(
 
 export default function middleware(req: NextRequest) {
   const excludePattern =
-    '^/(' + locales.join('|') + ')/(' + protectedRoutes.join('|') + ')/?.*?$';
+    '^/(' + LOCALES.join('|') + ')/(' + PROTECTED_ROUTES.join('|') + ')/?.*?$';
   const publicPathnameRegex = RegExp(excludePattern, 'i');
   const isPublicPage = !publicPathnameRegex.test(req.nextUrl.pathname);
 
