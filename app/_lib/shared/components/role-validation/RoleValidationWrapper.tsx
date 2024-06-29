@@ -13,6 +13,6 @@ export const RoleValidationWrapper: FC<{
   if (session?.user.role && session.user.role !== role) {
     return <UnauthorizedRedirect role={session.user.role} />;
   } else {
-    return <>children</>;
+    return <>{children}</>;
   }
 };
