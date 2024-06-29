@@ -1,23 +1,17 @@
 import GenericDashboardLayout from '@/app/_lib/shared/components/layout/GenericDashboardLayout';
 import { ADMIN_TABS } from '@/app/_lib/shared/utils/consts';
-import { getServerSession } from 'next-auth';
-import { nextAuthOptions } from '@/app/config/nextAuthOptions';
-import { UnauthorizedRedirect } from '@/app/_lib/shared/components/unauthorized-redirect/UnauthorizedRedirect';
+import { RoleValidationWrapper } from '@/app/_lib/shared/components/role-validation/RoleValidationWrapper';
 
 export default async function AdminDashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession(nextAuthOptions);
-
-  if (session?.user.role && session.user.role !== 'admin') {
-    return <UnauthorizedRedirect role={session.user.role} />;
-  } else {
-    return (
+  return (
+    <RoleValidationWrapper role={'admin'}>
       <GenericDashboardLayout tabs={ADMIN_TABS} portal={'admin'}>
         {children}
       </GenericDashboardLayout>
-    );
-  }
+    </RoleValidationWrapper>
+  );
 }
