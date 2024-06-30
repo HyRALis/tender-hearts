@@ -4,13 +4,7 @@ import { Box, Button } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import React, { FC, useEffect, useMemo, useState } from 'react';
-import {
-  getProviders,
-  LiteralUnion,
-  signIn,
-  useSession,
-} from 'next-auth/react';
-import { BuiltInProviderType } from 'next-auth/providers/index';
+import { getProviders, signIn } from 'next-auth/react';
 import { useLocale, useTranslations } from 'next-intl';
 
 export const ProviderLoginButtons: FC = () => {
@@ -21,7 +15,6 @@ export const ProviderLoginButtons: FC = () => {
   useEffect(() => {
     const setAuthProviders = async () => {
       const res = await getProviders();
-      console.log({ res });
 
       setProviders(res);
     };
