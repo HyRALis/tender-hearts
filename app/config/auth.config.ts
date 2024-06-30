@@ -1,22 +1,21 @@
-import { AuthOptions } from 'next-auth';
+import { NextAuthConfig } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import TwitchProvider from 'next-auth/providers/twitch';
 import CredentialsProvider from 'next-auth/providers/credentials';
+
+import { JWT } from 'next-auth/jwt';
 import connectDb from './db';
+import { findUserByEmail, findUserById } from '../api/_utils/findUser';
 import User from '../_lib/models/User';
 import { RoleEnum } from '../_lib/types/shared';
-import { JWT } from 'next-auth/jwt';
-import * as bcrypt from 'bcryptjs';
-import { findUserByEmail, findUserById } from '../api/_utils/findUser';
+import { signInWithCredentials } from '@/actions/user/signIn';
 
-export const nextAuthOptions: AuthOptions = {
+export default {
   pages: {
     signIn: '/en/login',
   },
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       authorization: {
         params: {
           prompt: 'consent',
@@ -26,8 +25,6 @@ export const nextAuthOptions: AuthOptions = {
       },
     }),
     TwitchProvider({
-      clientId: process.env.TWITCH_CLIENT_ID,
-      clientSecret: process.env.TWITCH_CLIENT_SECRET,
       authorization: {
         params: {
           scope: 'openid user:read:email',
@@ -51,24 +48,10 @@ export const nextAuthOptions: AuthOptions = {
         if (!credentials || !credentials.email || !credentials.password)
           return null;
 
-        await connectDb();
-
-        const user = await findUserByEmail(credentials?.email.toLowerCase());
-
-        if (user && user.password) {
-          const match = await bcrypt.compare(
-            credentials?.password,
-            user.password
-          );
-
-          if (match) {
-            return user;
-          } else {
-            return null;
-          }
-        }
-
-        return null;
+        return await signInWithCredentials(
+          credentials.email as string,
+          credentials.password as string
+        );
       },
     }),
   ],
@@ -102,7 +85,14 @@ export const nextAuthOptions: AuthOptions = {
 
       return true;
     },
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
     async session({ session, token }: { session: any; token: JWT }) {
+      await connectDb();
       let existingUser = null;
 
       if (session.user && session.user.email) {
@@ -116,7 +106,9 @@ export const nextAuthOptions: AuthOptions = {
       session.user.name = existingUser.fullName;
       session.accessToken = token.accessToken;
 
+      console.log({ session });
+
       return session;
     },
   },
-};
+} satisfies NextAuthConfig;

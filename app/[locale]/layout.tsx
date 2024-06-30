@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import '../globals.css';
 import { AuthProvider } from '../_lib/shared/components/layout/providers/AuthProvider';
+import connectDb from '../config/db';
 
 export default async function LocaleLayout({
   children,
@@ -15,17 +16,19 @@ export default async function LocaleLayout({
 }) {
   const messages = await getMessages();
 
+  await connectDb();
+
   return (
-    <AuthProvider>
-      <html lang={locale}>
-        <body style={{ width: '100vw', height: '100vh', background: 'white' }}>
-          <SpeedInsights />
+    <html lang={locale}>
+      <body style={{ width: '100vw', height: '100vh', background: 'white' }}>
+        <SpeedInsights />
+        <AuthProvider>
           <NextIntlClientProvider messages={messages}>
             <CssBaseline />
             {children}
           </NextIntlClientProvider>
-        </body>
-      </html>
-    </AuthProvider>
+        </AuthProvider>
+      </body>
+    </html>
   );
 }

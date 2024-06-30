@@ -1,14 +1,16 @@
 'use client';
 
-import { Box, Typography } from '@mui/material';
-import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
 import { useEffect } from 'react';
+import { Box, Typography } from '@mui/material';
+import { redirect } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 const RedirectPage = () => {
   const { data: sessionData } = useSession();
 
   useEffect(() => {
+    console.log({ sessionData });
+
     if (sessionData) {
       if (sessionData.user.role === 'donor') {
         redirect('/donor/dashboard');

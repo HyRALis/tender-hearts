@@ -5,7 +5,6 @@ import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import React, { FC, useEffect, useMemo, useState } from 'react';
 import {
-  ClientSafeProvider,
   getProviders,
   LiteralUnion,
   signIn,
@@ -17,14 +16,12 @@ import { useLocale, useTranslations } from 'next-intl';
 export const ProviderLoginButtons: FC = () => {
   const t = useTranslations('Index');
   const locale = useLocale();
-  const [providers, setProviders] = useState<Record<
-    LiteralUnion<BuiltInProviderType, string>,
-    ClientSafeProvider
-  > | null>(null);
+  const [providers, setProviders] = useState<any>(null);
 
   useEffect(() => {
     const setAuthProviders = async () => {
       const res = await getProviders();
+      console.log({ res });
 
       setProviders(res);
     };
